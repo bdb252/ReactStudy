@@ -10,3 +10,9 @@ Currently, two official plugins are available:
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+프로젝트 생성이 완료되면
+C:\> cd 프로젝트명
+C:\프로젝트명> npm install 혹은 npm i 
+설치가 완료되면..
+C:\프로젝트명> npm run dev
