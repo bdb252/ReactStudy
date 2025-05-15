@@ -5,11 +5,9 @@ import { useState } from "react";
 import NavList from "./components/navigation/NavList";
 import NavView from "./components/navigation/NavView";
 import NavWrite from "./components/navigation/NavWrite";  
-import NavEdit from "./components/navigation/NavEdit";
 import ArticleList from "./components/article/ArticleList"; 
 import ArticleView from "./components/article/ArticleView";
 import ArticleWrite from "./components/article/ArticleWrite";
-import ArticleEdit from "./components/article/ArticleEdit";
 
 //페이지가 없을때 임시로 사용하기 위한 컴포넌트
 function ReadyComp(){
@@ -177,26 +175,6 @@ function Header(props){
 
       //삭제가 완료되면 리스트로 전환한다. 
       setMode('list');
-    }
-    else if(mode==='edit'){
-      titleVar = '게시판-수정(props)';
-
-      navComp = <NavEdit
-        onChangeMode={()=>{
-          setMode('list');
-        }}
-        onBack={() => {
-          setMode('view');
-          setMode(no);
-        }}
-      ></NavEdit>
-      for(let i=0; i<boardData.length; i++){
-        if(no==boardData[i].no){
-          selectRow = boardData[i];
-        }
-      }
-
-      articleComp = <ArticleEdit selectRow={selectRow}></ArticleEdit>
     }
     else{
       //mode의 값이 없는 경우 '준비중'을 화면에 표시한다.
