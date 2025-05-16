@@ -100,7 +100,7 @@ const RouterHooks=() => {
   // 별도의 인수 없이 변수를 정의
   const location = useLocation();
   // 쿼리스트링의 정보를 얻어오기 위한 변수와 변경을 위한 함수 정의
-  const [searchParams, setSerchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   /* 쿼리스트링에서 파라미터를 얻어온다. 첫 진입시에는 둘다 null이다. 
   아래 조작을 위한 함수를 실행하면 설정된 값을 읽어올 수 있다. */ 
   const mode = searchParams.get('mode');
@@ -112,7 +112,7 @@ const RouterHooks=() => {
     const nextMode = (mode==='list') ? 'view' : 'list';
     /* 파라미터 변경을 위한 setXX함수를 통해 값을 변경한다. 
     pageNum의 경우 값이 지정되지 않았으므로 기존의 값을 유지한다. */ 
-    setSerchParams({
+    setSearchParams({
       mode : nextMode,
       pageNum
     });
@@ -132,7 +132,7 @@ const RouterHooks=() => {
       window.alert('마지막 페이지입니다.');
     }
     // mode는 고정된 상태에서 pageNum만 변경한다. 
-    setSerchParams({
+    setSearchParams({
       mode,
       pageNum : pageTemp
     });
@@ -145,7 +145,7 @@ const RouterHooks=() => {
       pageTemp = 1;
       window.alert('첫번째 페이지입니다.');
     }
-    setSerchParams({
+    setSearchParams({
       mode,
       pageNum : pageTemp
     });
