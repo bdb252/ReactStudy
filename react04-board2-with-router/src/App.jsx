@@ -6,6 +6,7 @@ import {useNavigate} from "react-router-dom";
 import List from './components/board/List.jsx';
 import Write from './components/board/Write.jsx';
 import View from './components/board/View.jsx';
+import Edit from './components/board/Edit.jsx';
 import NotFound from './components/common/NotFound.jsx';
 // 스테이트 사용을 위한 임포트
 import { useState } from "react";
@@ -54,6 +55,15 @@ function App() {
             nextNo={nextNo} setNextNo={setNextNo}
             navigate={navigate} nowDate={nowDate}
           />} />
+          <Route path="/edit">
+            <Route path=":no" element={<Edit 
+              boardData = {boardData} setBoardData = {setBoardData}
+              navigate = {navigate} nowDate = {nowDate} />}
+            />
+          </Route>
+          {/* <Route path="/delete/:no" element={
+            <Delete boardData={boardData} setBoardData={setBoardData} />
+          } /> */}
           <Route path='*' element = {<NotFound />} />
         </Routes>
       </div>

@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom"
+import { Link, useNavigate, useParams, useSearchParams } from "react-router-dom"
 
 function View(props) {
   /**
@@ -8,8 +8,12 @@ function View(props) {
   */ 
   var params = useParams();
   console.log('파라미터', params.no);
-  console.log('no:', props.no);
-  console.log('nextNo:', params.nextNo);
+
+  // var navigate = useNavigate();
+  //
+  // console.log('length:', props.boardData.length);
+  // console.log('no:', props.no);
+  // console.log('nextNo:', params.nextNo);
   /**
   데이터 배열의 크기만큼 반복하여 조건에 맞는 객체를 찾은 후 반환한다. 
   빈 객체를 초기값으로 사용했으므로, 배열의 크기인 N만큼 반복하게 된다.  
@@ -23,6 +27,62 @@ function View(props) {
     return prev;
   }, {});
 
+  let pageNum = Number(params.no);
+  console.log('pageNum:',pageNum);
+  let prevNum = 0, nextNum = 0;
+
+  if(pageNum-1===0){
+    prevNum = 1;
+  }
+  else{
+    prevNum = Number(params.no)-1;
+  }
+  if(pageNum+1>props.boardData.length){
+    nextNum = props.boardData.length;
+  }
+  else{
+    nextNum = pageNum+1;
+  }
+
+  const goPrev=() => {
+    const prevNum = (pageNum - 1 === 0) ? 1 : pageNum - 1;
+    if (pageNum === 1) {
+      alert('첫 번째 페이지입니다.');
+    }
+    props.navigate("/view/" + prevNum);
+    // if(pageNum - 1===0){
+    //   prevNum = 1;
+    //   window.alert('첫번째 페이지입니다.');
+    // }
+    // else{
+    //   prevNum = Number(params.no) - 1;
+    // }
+    // console.log('prevNum:',prevNum);
+    // navigate("/view/"+prevNum);
+  }
+
+  const goNext=() => {
+    const nextNum = (pageNum + 1 > props.boardData.length)
+      ? props.boardData.length
+      : pageNum + 1;
+    if (pageNum === props.boardData.length) {
+      alert('마지막 페이지입니다.');
+    }
+    props.navigate("/view/" + nextNum);
+    // nextNum = pageNum+1;
+    // let isNextNum = props.boardData.reduce((prev,curr) => {
+    //   if(curr.no===nextNum){
+    //     prev = true;
+    //   }
+    //   return prev;
+    // }, false);
+    // if(isNextNum===false){
+    //   nextNum = pageNum;
+    //   window.alert('다음 페이지가 없습니다.')
+    // }
+    // console.log('nextNum:',nextNum);
+    // navigate("/view/"+nextNum);
+  }
   return (<>
     <header>
       <h2>게시판-읽기</h2>
@@ -57,8 +117,10 @@ function View(props) {
       </tbody>
     </table>
     </article>
-    {/* <button onClick={prevPage}>이전Page</button> */}
-    {/* <button onClick={nextPage}>다음Page</button> */}
+    <Link to={"/view/"+prevNum} >이전글</Link>
+    <Link to={"/view/"+nextNum}>다음글</Link>
+    {/* <button onClick={goPrev()}>이전글2</button> */}
+    {/* <button onClick={goNext()}>다음글2</button> */}
   </>);
 }
 
