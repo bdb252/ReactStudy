@@ -1,0 +1,290 @@
+{
+  "results": [
+    {
+      "gender": "female",
+      "name": {
+        "title": "Mrs",
+        "first": "Dana",
+        "last": "Moore"
+      },
+      "location": {
+        "street": {
+          "number": 795,
+          "name": "Forest Ln"
+        },
+        "city": "Mackay",
+        "state": "Northern Territory",
+        "country": "Australia",
+        "postcode": 1903,
+        "coordinates": {
+          "latitude": "-84.8806",
+          "longitude": "30.9112"
+        },
+        "timezone": {
+          "offset": "+5:00",
+          "description": "Ekaterinburg, Islamabad, Karachi, Tashkent"
+        }
+      },
+      "email": "dana.moore@example.com",
+      "login": {
+        "uuid": "396a1484-c76e-49c1-8e65-16f12cfebcf9",
+        "username": "goldenbutterfly484",
+        "password": "giants",
+        "salt": "DA6LXgX6",
+        "md5": "eaeec8a908787651045b90e732128ad0",
+        "sha1": "a31d0421479f02c7e55124508653bf56ef285574",
+        "sha256": "21e84bfc68208ac1cd4a3763ad86421a8150b001cade0f8f5390f239faa52058"
+      },
+      "dob": {
+        "date": "2001-01-10T04:34:52.358Z",
+        "age": 24
+      },
+      "registered": {
+        "date": "2003-08-09T22:12:16.313Z",
+        "age": 21
+      },
+      "phone": "07-9867-9604",
+      "cell": "0429-664-219",
+      "id": {
+        "name": "TFN",
+        "value": "514610795"
+      },
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/women/13.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/women/13.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/13.jpg"
+      },
+      "nat": "AU"
+    },
+    {
+      "gender": "female",
+      "name": {
+        "title": "Ms",
+        "first": "Željka",
+        "last": "Radojičić"
+      },
+      "location": {
+        "street": {
+          "number": 4941,
+          "name": "Dvadesetog Aprila"
+        },
+        "city": "Ćićevac",
+        "state": "South Banat",
+        "country": "Serbia",
+        "postcode": 24517,
+        "coordinates": {
+          "latitude": "-80.0293",
+          "longitude": "-23.1190"
+        },
+        "timezone": {
+          "offset": "+9:30",
+          "description": "Adelaide, Darwin"
+        }
+      },
+      "email": "zeljka.radojicic@example.com",
+      "login": {
+        "uuid": "4eaa642e-9379-430b-b92d-cf9fe733c210",
+        "username": "orangepanda607",
+        "password": "thethe",
+        "salt": "eaeoTcAI",
+        "md5": "54629886eabbf9f56018f62717d74bf4",
+        "sha1": "ab68f318075684995c7350577e964c8207171c94",
+        "sha256": "5621fcb2f5c55efa5e71f9f29db054c5ed8a0502d9c234a927c655c7a685b5bd"
+      },
+      "dob": {
+        "date": "1977-12-04T03:53:18.327Z",
+        "age": 47
+      },
+      "registered": {
+        "date": "2003-05-02T13:39:06.341Z",
+        "age": 22
+      },
+      "phone": "021-7949-049",
+      "cell": "063-0556-614",
+      "id": {
+        "name": "SID",
+        "value": "117567941"
+      },
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/women/6.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/women/6.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/6.jpg"
+      },
+      "nat": "RS"
+    },
+    {
+      "gender": "female",
+      "name": {
+        "title": "Miss",
+        "first": "Enya",
+        "last": "Malvik"
+      },
+      "location": {
+        "street": {
+          "number": 9193,
+          "name": "Bråtenalléen"
+        },
+        "city": "Lakselv",
+        "state": "Bergen",
+        "country": "Norway",
+        "postcode": "3141",
+        "coordinates": {
+          "latitude": "-76.9465",
+          "longitude": "-96.0798"
+        },
+        "timezone": {
+          "offset": "+6:00",
+          "description": "Almaty, Dhaka, Colombo"
+        }
+      },
+      "email": "enya.malvik@example.com",
+      "login": {
+        "uuid": "b068e8b9-9018-42ce-ae06-f50989a1622c",
+        "username": "lazyfrog939",
+        "password": "happy123",
+        "salt": "4h7AY41i",
+        "md5": "062f74e4b7e705ad20ef4f02ee22b623",
+        "sha1": "17a7612d2e902630530be165b76ecc7ee0c6e726",
+        "sha256": "6d8bc8137550a73ee9fa2b3c63ac403736a2c9472bbe91d01ce243d0848154cb"
+      },
+      "dob": {
+        "date": "1985-10-30T19:19:05.962Z",
+        "age": 39
+      },
+      "registered": {
+        "date": "2014-01-02T13:50:03.304Z",
+        "age": 11
+      },
+      "phone": "74530135",
+      "cell": "43866773",
+      "id": {
+        "name": "FN",
+        "value": "30108541098"
+      },
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/women/85.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/women/85.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/85.jpg"
+      },
+      "nat": "NO"
+    },
+    {
+      "gender": "female",
+      "name": {
+        "title": "Ms",
+        "first": "Eva",
+        "last": "da Paz"
+      },
+      "location": {
+        "street": {
+          "number": 9567,
+          "name": "Avenida da Democracia"
+        },
+        "city": "Ilhéus",
+        "state": "Bahia",
+        "country": "Brazil",
+        "postcode": 96326,
+        "coordinates": {
+          "latitude": "14.8232",
+          "longitude": "43.1372"
+        },
+        "timezone": {
+          "offset": "-9:00",
+          "description": "Alaska"
+        }
+      },
+      "email": "eva.dapaz@example.com",
+      "login": {
+        "uuid": "cf62bc48-5ce1-462d-a1f6-ded2685eb9eb",
+        "username": "smallelephant560",
+        "password": "bass",
+        "salt": "geLuOQhJ",
+        "md5": "546dd3ff43c19acbb9ebc9827cbbdd6c",
+        "sha1": "99e86358d17f1c0f6ee0d93b4ea5fa76b4875d3c",
+        "sha256": "e17d40cb086d46c01fec0cef3b11972980217eb52f17084e5e3d2ee76c06fe33"
+      },
+      "dob": {
+        "date": "1947-02-10T11:32:35.886Z",
+        "age": 78
+      },
+      "registered": {
+        "date": "2019-04-09T02:08:55.756Z",
+        "age": 6
+      },
+      "phone": "(95) 2537-9725",
+      "cell": "(08) 3398-5930",
+      "id": {
+        "name": "CPF",
+        "value": "559.175.389-30"
+      },
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/women/14.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/women/14.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/14.jpg"
+      },
+      "nat": "BR"
+    },
+    {
+      "gender": "female",
+      "name": {
+        "title": "Mrs",
+        "first": "Cherissa",
+        "last": "Sombroek"
+      },
+      "location": {
+        "street": {
+          "number": 6553,
+          "name": "Hofspijk"
+        },
+        "city": "St.-Annaparochie",
+        "state": "Utrecht",
+        "country": "Netherlands",
+        "postcode": "1757 ON",
+        "coordinates": {
+          "latitude": "-6.5565",
+          "longitude": "27.6165"
+        },
+        "timezone": {
+          "offset": "+11:00",
+          "description": "Magadan, Solomon Islands, New Caledonia"
+        }
+      },
+      "email": "cherissa.sombroek@example.com",
+      "login": {
+        "uuid": "5015856e-9abc-4525-9c54-f1f062f1195a",
+        "username": "orangegorilla573",
+        "password": "smokey1",
+        "salt": "lA7uSKE5",
+        "md5": "326e633dcf59549f570c3e58c6222b64",
+        "sha1": "2844df22722fcf46f64e2d2b2019d0d404859f67",
+        "sha256": "dbcd06df1519a3c74830be15aac4e3c146cbe901329dff172d18bd500daf3d54"
+      },
+      "dob": {
+        "date": "1996-07-06T16:50:56.276Z",
+        "age": 28
+      },
+      "registered": {
+        "date": "2016-05-24T10:45:52.999Z",
+        "age": 8
+      },
+      "phone": "(0337) 613211",
+      "cell": "(06) 08518712",
+      "id": {
+        "name": "BSN",
+        "value": "49506884"
+      },
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/women/31.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/women/31.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/31.jpg"
+      },
+      "nat": "NL"
+    }
+  ],
+  "info": {
+    "seed": "7181b79585ddadc2",
+    "results": 5,
+    "page": 1,
+    "version": "1.4"
+  }
+}
