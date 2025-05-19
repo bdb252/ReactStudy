@@ -1,34 +1,30 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import {Routes, Route} from "react-router-dom";
+
+import List from './components/board/List.jsx';
+import Write from './components/board/Write.jsx';
+import View from './components/board/View.jsx';
+import Edit from "./components/board/Edit.jsx";
+import NotFound from './components/common/NotFound.jsx';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div>
+      <Routes>
+        <Route path='/' element = {<List></List>} />
+        <Route path='/list' element = {<List></List>} />
+        {/* 중첩라우팅으로 게시물의 일련번호가 하위경로 형태로 추가된다.
+        이것을 useParams 훅을 통해 읽어올 수 있다.  */}
+        <Route path='/view'>
+          <Route path=":idx" element = {<View></View>}></Route>
+        </Route>
+        <Route path='/write' element = {<Write></Write>} />
+        <Route path='/edit'>
+          <Route path=':idx' element = {<Edit></Edit>} />
+        </Route>
+        <Route path='*' element = {<NotFound></NotFound>} />
+      </Routes>
+      
+    </div>
   )
 }
 
