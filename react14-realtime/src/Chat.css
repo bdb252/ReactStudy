@@ -10,3 +10,5 @@ input[name=message]{width:236px; height:30px;}
 	background-color:#EEEEEE;
 }
 .myMsg{text-align:right;}
+.names{font-size: 12px;}
+.msgs{ font-size : 16px; display: inline; background-color: yellow; border-radius: 10px;}

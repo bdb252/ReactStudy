@@ -71,7 +71,9 @@ function ChatMessage() {
         }
         else{
           // 상대방이 보낸 메시지는 좌측으로 정렬한다. 
-          showDiv.push(<div>{childData.message}</div>);
+          showDiv.push(<div className='names'>{childData.id} <br />
+            <div className='msgs'>{childData.message}&nbsp;</div>
+          </div>);
         }
         // 스크롤바를 최하단으로 내려준다. 근데 한칸씩 밀림
         // scrollTop(chatWindow.current);
