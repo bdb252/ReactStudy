@@ -48,8 +48,8 @@ function App() {
     setCommentData(newCommentData);
   }
 
-  const editCommentProcess=(no, writer, content) => {
-    console.log('수정', no, writer, content);
+  const editCommentProcess=(no, writer, contents) => {
+    console.log('수정', no, writer, contents);
     let newCommentData = commentData.map((row)=>{
       if(row.no === no){
         return {...row, writer, contents};
@@ -69,11 +69,14 @@ function App() {
           <CommentList comment={commentRow} key={commentRow.no} 
             onChangeLikes={likesChangeProcess}
             onDeleteComment={deleteCommentProcess}
-            onEditComment={(targetComment) => setEditTarget(targetComment)}
+            onEditComment={() => setEditTarget(commentRow)}
             />
           ))
         }
-      {/* <CommentList></CommentList> */}
+        {editTarget && (
+          <CommentEdit no={editTarget.no} writer={editTarget.writer}
+            contents={editTarget.contents} editCommentProcess={editCommentProcess}></CommentEdit>
+        )}
     </div>  
   </>)
 }
