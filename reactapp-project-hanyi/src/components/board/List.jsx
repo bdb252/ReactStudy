@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { firestore } from "./firestoreConfig";
+import { useEffect, useState } from "react";
+import { firestore } from "../../firestoreConfig";
 import {getDocs, collection} from "firebase/firestore";
 
 function App() {
@@ -12,17 +12,17 @@ function App() {
     // 컬렉션명으로 하위 도큐먼트를 읽어온다.
     const querySnapshot = await getDocs(collection(firestore, "boardData"));
     querySnapshot.forEach((doc) => {
-      console.log(doc.id,'=>',doc.data());
+      // console.log(doc.id,'=>',doc.data());
       // 콜백된 객체(doc)를 기반으로 data()함수를 호출하여 실제데이터 얻기
       let boardInfo = doc.data();
-      // console.log('파싱', doc.id, boardInfo.writer, boardInfo.contents, boardInfo.regdate);
+      // console.log('파싱', doc.id, boardInfo.writer, boardInfo.contents, boardInfo.date);
       // tr태그로 출력할 항목 구성
       trArray.push(
         <tr key={doc.id}>
-          <td className="cen">{doc.id}</td>
+          {/* <td className="cen">{doc.id}</td> */}
           <td className="cen">{boardInfo.writer}</td>
           <td className="cen">{boardInfo.contents}</td>
-          <td className="cen">{boardInfo.regdate}</td>
+          <td className="cen">{boardInfo.date}</td>
         </tr>
       )
     })
@@ -30,17 +30,21 @@ function App() {
     setShowData(trArray);
   }
 
+  useEffect(()=>{
+    getCollection();
+  },[]);
+
   return (<>
     <div className="App">
       <h2>Firebase - Firestore 연동 App</h2>
       <h3>전체조회하기</h3>
-      <button type="button" onClick={getCollection}>전체조회</button>
+      {/* <button type="button" onClick={getCollection}>전체조회</button> */}
         <table border='1' className="table table-bordered">
           <thead>
             <tr className="text-center">
               <th>이름</th>
-              <th>날짜</th>
               <th>내용</th>
+              <th>날짜</th>
             </tr>
           </thead>
           <tbody>

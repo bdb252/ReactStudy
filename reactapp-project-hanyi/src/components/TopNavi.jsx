@@ -30,15 +30,19 @@ const TopNavi = (props) => {
 
   return (<>
     <div className="nav-wrapper">
-      <nav className="top-navi">
-        <img src="/images/catwithguitar.png" alt="로고" className="logocat" />
-        <NavLink to='/'>Home</NavLink>&nbsp;&nbsp;
-        <NavLink to='/regist'>회원가입</NavLink>&nbsp;&nbsp;
-        <NavLink to='/login'>로그인</NavLink>&nbsp;&nbsp;
-        <NavLink to='/board'>게시판</NavLink>&nbsp;&nbsp;
-        <NavLink to='/chat'>실시간 채팅</NavLink>&nbsp;&nbsp;
-        <a href='/#faq' onClick={handleFAQ}>FAQ</a>
-      </nav>
+      <header>
+        <nav className="top-navi">
+          <a href="/" className="logo">
+            <img src="/images/catwithguitar.png" alt="로고" className="logocat" />
+          </a>
+          <NavLink to='/'>Home</NavLink>&nbsp;&nbsp;
+          <NavLink to='/regist'>회원가입</NavLink>&nbsp;&nbsp;
+          <NavLink to='/login'>로그인</NavLink>&nbsp;&nbsp;
+          <NavLink to='/board'>게시판</NavLink>&nbsp;&nbsp;
+          <NavLink to='/chat'>실시간 채팅</NavLink>&nbsp;&nbsp;
+          <a href='/#faq' onClick={handleFAQ}>FAQ</a>
+        </nav>
+      </header>
     </div>
   </>)
 }

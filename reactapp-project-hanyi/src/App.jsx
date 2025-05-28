@@ -21,7 +21,7 @@ function App() {
         <Route path="/" element={<Home></Home>} />
         <Route path="/regist" element={<Regist></Regist>} />
         <Route path='/login' element={<Login></Login>} />
-        {/* <Route path='/board' element={<Board></Board>} /> */}
+        <Route path='/board' element={<Board></Board>} />
         {/* 자유게시판 */}
         {/* freeList freeView freeWrite */}
         <Route path='/chat'>

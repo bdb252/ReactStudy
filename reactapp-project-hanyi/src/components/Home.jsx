@@ -11,37 +11,39 @@ const Home = () => {
     </div>
 
     {/* faqSection */}
-    <Element name="faqSection">
-      <div>
-        <h2>Frequently Asked Question</h2>
+    <div className='sectionfaq'>
+      <Element name="faqSection">
         <div>
-          <details>
-            <summary>Q1. 어떻게 가입하나요?</summary>
-            <p>회원가입.</p>
-          </details>
+          <h2>Frequently Asked Question</h2>
+          <div>
+            <details>
+              <summary>Q1. 어떻게 가입하나요?</summary>
+              <p>회원가입.</p>
+            </details>
 
-          <details>
-            <summary>Q2. 로그인하는 방법은요?</summary>
-            <p>로그인.</p>
-          </details>
+            <details>
+              <summary>Q2. 로그인하는 방법은요?</summary>
+              <p>로그인.</p>
+            </details>
 
-          <details>
-            <summary>Q3. 게시판 이용 방법?</summary>
-            <p>게시판.</p>
-          </details>
+            <details>
+              <summary>Q3. 게시판 이용 방법?</summary>
+              <p>게시판.</p>
+            </details>
 
-          <details>
-            <summary>Q4. 실시간 채팅 이용 방법?</summary>
-            <p>실시간채팅 - 채팅 시작하기. 스크롤바 위에.</p>
-          </details>
+            <details>
+              <summary>Q4. 실시간 채팅 이용 방법?</summary>
+              <p>실시간채팅 - 채팅 시작하기. 스크롤바 위에.</p>
+            </details>
 
-          <details>
-            <summary>Q5. 회원정보 수정 방법?</summary>
-            <p>???.</p>
-          </details>
+            <details>
+              <summary>Q5. 회원정보 수정 방법?</summary>
+              <p>???.</p>
+            </details>
+          </div>
         </div>
-      </div>
-    </Element>
+      </Element>
+    </div>
 
     {/* 배경이미지3 */}
     <div>

@@ -1,4 +1,4 @@
-import {initializeApp} from "firebase/app";
+import {initializeApp, getApps} from "firebase/app";
 import {getDatabase} from "firebase/database";
 
 const firebaseConfig = {
@@ -12,6 +12,7 @@ const firebaseConfig = {
   databaseURL: import.meta.env.VITE_databaseURL
 }
 
-const app = initializeApp(firebaseConfig);
-const realtime = getDatabase(app);
+// const app = initializeApp(firebaseConfig);
+// const realtime = getDatabase(app);
+const realtime = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
 export {realtime};

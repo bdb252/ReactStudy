@@ -21,16 +21,124 @@ h2 {
   margin-bottom: 20px;
 }
 
+/* nav */
+.nav-wrapper {
+  width: 100%;
+  /* 화면 전체 기준 */
+  overflow: hidden;
+  /* ✅ 넘치는 건 안 보이게 */
+  display: flex;
+  justify-content: center;
+  /* ✅ nav를 수평 가운데 정렬 */
+}
+
+nav.top-navi {
+  display: flex;
+  gap: 20px;
+  padding: 10px 0;
+  align-items: center;
+  white-space: nowrap;
+  /* ✅ 줄바꿈 안 함 */
+}
+
+@media (max-width: 768px) {
+  nav.top-navi {
+    gap: 10px;
+    /* 화면 작아지면 간격 축소 */
+  }
+}
+
+@media (max-width: 480px) {
+  nav.top-navi {
+    gap: 1px;
+    /* 더 작아지면 더 줄이기 */
+  }
+}
+
+/* header */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  line-height: 1;
+  padding: 17px var(--side-padding-s) 17px 15px;
+  background-color: white;
+  z-index: 10;
+  box-shadow: 0px 1px 9px rgba(0, 0, 0, 0.2);
+  font-size: 16px;
+}
+@media (max-width: 700px) {
+  header {
+    padding: 12px var(--side-padding-s) 12px 15px;
+    font-size: 14px;
+  }
+}
+header .logo img {
+  max-width: 115px;
+}
+@media (max-width: 700px) {
+  header .logo img {
+    max-width: 88px;
+  }
+}
+header .menu {
+  display: flex;
+  gap: 55px;
+}
+@media (max-width: 900px) {
+  header .menu {
+    gap: 30px;
+  }
+}
+@media (max-width: 700px) {
+  header .menu {
+    gap: 22px;
+  }
+}
+
+@media (max-width: 700px) {
+  header {
+    padding: 12px var(--side-padding-s) 12px 15px;
+    font-size: 14px;
+  }
+}
+
 .backImg {
   width: 100%;
   max-width: 1200px;
-  min-width: 600px; 
+  min-width: 600px;
   height: auto;
 }
 
-.logocat{
+.logocat {
   max-block-size: 50px;
 }
+
+/* faq */
+.sectionfaq {
+  /* padding-left: var(--side-padding-l);
+  padding-right: var(--side-padding-l); */
+}
+
+/* :root {
+  --side-padding-s: 50px;
+  --side-padding-m: 7vw;
+  --side-padding-l: 10vw;
+  --side-padding-xl: 24vw;
+} */
+
+/* @media (max-width: 900px) {
+  :root {
+    --side-padding-s: 30px;
+    --side-padding-m: 5vw;
+    --side-padding-l: 7vw;
+    --side-padding-xl: 10vw;
+  }
+} */
 
 .signup-form label {
   display: block;
@@ -181,32 +289,4 @@ footer .copyright {
 .btn:hover svg {
   transform: scale(0.9);
   fill: #333333;
-}
-
-/* nav */
-.nav-wrapper {
-  width: 100%;                /* 화면 전체 기준 */
-  overflow: hidden;           /* ✅ 넘치는 건 안 보이게 */
-  display: flex;
-  justify-content: center;    /* ✅ nav를 수평 가운데 정렬 */
-}
-
-nav.top-navi {
-  display: flex;
-  gap: 20px;
-  padding: 10px 0;
-  align-items: center;
-  white-space: nowrap;    /* ✅ 줄바꿈 안 함 */
-}
-
-@media (max-width: 768px) {
-  nav.top-navi {
-    gap: 10px;            /* 화면 작아지면 간격 축소 */
-  }
-}
-
-@media (max-width: 480px) {
-  nav.top-navi {
-    gap: 1px;            /* 더 작아지면 더 줄이기 */
-  }
 }
