@@ -74,7 +74,7 @@ function App() {
             <option value="name">이름</option>
           </select>
           <input type="text" name="searchStr" className="form-control" />
-          <button type="submit" className="btn btn-danger">전체조회</button>
+          <button type="submit" className="btn btn-danger">검색</button>
         </div>
         <table className="table table-bordered">
           <thead>

@@ -1,7 +1,10 @@
 body {
-  font-family: Arial, sans-serif;
   background-color: #f4f4f4;
   padding: 40px;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 .container {
@@ -16,6 +19,17 @@ body {
 h2 {
   text-align: center;
   margin-bottom: 20px;
+}
+
+.backImg {
+  width: 100%;
+  max-width: 1200px;
+  min-width: 600px; 
+  height: auto;
+}
+
+.logocat{
+  max-block-size: 50px;
 }
 
 .signup-form label {
@@ -70,11 +84,13 @@ h2 {
   font-size: 14px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  min-width: 0; /* 중요: 넘침 방지 */
+  min-width: 0;
+  /* 중요: 넘침 방지 */
 }
 
 .flex-group button {
-  width: 100px; /* 버튼 너비 고정 */
+  width: 100px;
+  /* 버튼 너비 고정 */
   padding: 10px;
   font-size: 14px;
   border: none;
@@ -97,4 +113,100 @@ h2 {
 
 .content {
   flex: 1;
+}
+
+details {
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  border-radius: 6px;
+  background: #f9f9f9;
+}
+
+summary {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* footer */
+
+footer .inner .column .footer-item {
+  font-size: 14px;
+}
+
+footer .inner .column .footer-item {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 17px;
+  line-height: 1.4;
+}
+
+footer .copyright {
+  display: block;
+  padding: 100px 0 0;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+}
+
+/* From Uiverse.io by CYBWEBALI */
+.btn {
+  display: grid;
+  place-items: center;
+  background: #e3edf7;
+  padding: 1.4em;
+  border-radius: 10px;
+  box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.15),
+    -6px -6px 10px -1px rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0);
+  cursor: pointer;
+  transition: transform 0.5s;
+}
+
+.btn:hover {
+  box-shadow: inset 4px 4px 6px -1px rgba(0, 0, 0, 0.2),
+    inset -4px -4px 6px -1px rgba(255, 255, 255, 0.7),
+    -0.5px -0.5px 0px rgba(255, 255, 255, 1),
+    0.5px 0.5px 0px rgba(0, 0, 0, 0.15),
+    0px 12px 10px -10px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  transform: translateY(0.5em);
+}
+
+.btn svg {
+  transition: transform 0.5s;
+}
+
+.btn:hover svg {
+  transform: scale(0.9);
+  fill: #333333;
+}
+
+/* nav */
+.nav-wrapper {
+  width: 100%;                /* 화면 전체 기준 */
+  overflow: hidden;           /* ✅ 넘치는 건 안 보이게 */
+  display: flex;
+  justify-content: center;    /* ✅ nav를 수평 가운데 정렬 */
+}
+
+nav.top-navi {
+  display: flex;
+  gap: 20px;
+  padding: 10px 0;
+  align-items: center;
+  white-space: nowrap;    /* ✅ 줄바꿈 안 함 */
+}
+
+@media (max-width: 768px) {
+  nav.top-navi {
+    gap: 10px;            /* 화면 작아지면 간격 축소 */
+  }
+}
+
+@media (max-width: 480px) {
+  nav.top-navi {
+    gap: 1px;            /* 더 작아지면 더 줄이기 */
+  }
 }
