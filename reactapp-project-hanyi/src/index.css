@@ -21,40 +21,9 @@ h2 {
   margin-bottom: 20px;
 }
 
-/* nav-wrapper: nav를 감싸는 래퍼 */
-.nav-wrapper {
-  width: 100%;
-  display: flex;
-  justify-content: flex-end; /* ✅ 기본은 우측 정렬 */
-  overflow: hidden;
-}
-
-/* nav 스타일 */
-nav.top-navi {
-  display: flex;
-  gap: 20px;
-  padding: 10px 0;
-  align-items: center;
-  white-space: nowrap; /* ✅ 줄바꿈 방지 */
-}
-
-/* 화면이 넓어지면 nav를 가운데 정렬 */
-@media (min-width: 768px) {
-  .nav-wrapper {
-    justify-content: center; /* ✅ 중앙 정렬로 변경 */
-  }
-}
-
-@media (max-width: 768px) {
-  nav.top-navi {
-    gap: 10px; /* 간격 축소 */
-  }
-}
-
-@media (max-width: 480px) {
-  nav.top-navi {
-    gap: 5px; /* 더 작아지면 더 축소 */
-  }
+.nav-link {
+  text-decoration: none;
+  padding: 12px 20px 12px 15px;
 }
 
 /* header 스타일 */
@@ -73,24 +42,42 @@ header {
   box-shadow: 0px 1px 9px rgba(0, 0, 0, 0.2);
   font-size: 16px;
 }
-
-@media (max-width: 768px) {
+@media (max-width: 700px) {
   header {
     padding: 12px var(--side-padding-s) 12px 15px;
-    font-size: 16px;
+    /* font-size: 14px; */
   }
 }
-
 header .logo img {
   max-width: 115px;
 }
-
-@media (max-width: 480px) {
+@media (max-width: 700px) {
   header .logo img {
     max-width: 88px;
   }
 }
+header .menu ul {
+  display: flex;
+  gap: 55px;
+}
+@media (max-width: 900px) {
+  header .menu ul {
+    gap: 30px;
+  }
+}
+@media (max-width: 700px) {
+  header .menu ul {
+    gap: 22px;
+  }
+}
+header .menu ul li a.active {
+  opacity: 0.6;
+}
 
+.menu a {
+  text-decoration: none;
+  color: inherit;
+}
 
 .backImg {
   width: 100%;

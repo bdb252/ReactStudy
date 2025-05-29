@@ -17,7 +17,7 @@ function CatList(props) {
   });
 
   return (<>
-    <h2>고양이 이야기</h2>
+    <h2>유기묘 이야기</h2>
     <article>
       <table id="boardTable">
         <thead>

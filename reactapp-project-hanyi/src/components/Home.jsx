@@ -2,7 +2,8 @@ import { Element } from 'react-scroll';
 
 const Home = () => {
   return (<>
-    <h2>react 애플리케이션 제작</h2>
+    <h2>The cat's out of the bag<br/>
+    Black cats are not bad luck <br /></h2>
     <div className='backImg'>
       {/* 배경사진 1, 2 */}
       <img src="/images/backgroundimg_tmp.jpeg" alt="배너1" className='backImg' />

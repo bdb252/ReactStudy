@@ -31,10 +31,10 @@ const TopNavi = (props) => {
   return (<>
     <div className="nav-wrapper">
       <header>
-        <nav className="top-navi">
           <a href="/" className="logo">
             <img src="/images/catwithguitar.png" alt="로고" className="logocat" />
           </a>
+        <nav className="menu nav-link">
           <NavLink to='/'>Home</NavLink>&nbsp;&nbsp;
           <NavLink to='/regist'>회원가입</NavLink>&nbsp;&nbsp;
           <NavLink to='/login'>로그인</NavLink>&nbsp;&nbsp;
