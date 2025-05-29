@@ -44,7 +44,7 @@ function App() {
       contents:'Project는 뭘 만들어볼까?',
       img:'/images/tuxedocat.jpg'
     },
-    {no:4, title:'블랙', writer:'black', date:'2023-05-05',
+    {no:4, title:'깜고', writer:'black', date:'2023-05-05',
       contents:'Project는 뭘 만들어볼까?',
       img:'/images/blackcat.jpg'
     }

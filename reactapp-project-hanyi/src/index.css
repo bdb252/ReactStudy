@@ -21,41 +21,43 @@ h2 {
   margin-bottom: 20px;
 }
 
-/* nav */
+/* nav-wrapper: nav를 감싸는 래퍼 */
 .nav-wrapper {
   width: 100%;
-  /* 화면 전체 기준 */
-  overflow: hidden;
-  /* ✅ 넘치는 건 안 보이게 */
   display: flex;
-  justify-content: center;
-  /* ✅ nav를 수평 가운데 정렬 */
+  justify-content: flex-end; /* ✅ 기본은 우측 정렬 */
+  overflow: hidden;
 }
 
+/* nav 스타일 */
 nav.top-navi {
   display: flex;
   gap: 20px;
   padding: 10px 0;
   align-items: center;
-  white-space: nowrap;
-  /* ✅ 줄바꿈 안 함 */
+  white-space: nowrap; /* ✅ 줄바꿈 방지 */
+}
+
+/* 화면이 넓어지면 nav를 가운데 정렬 */
+@media (min-width: 768px) {
+  .nav-wrapper {
+    justify-content: center; /* ✅ 중앙 정렬로 변경 */
+  }
 }
 
 @media (max-width: 768px) {
   nav.top-navi {
-    gap: 10px;
-    /* 화면 작아지면 간격 축소 */
+    gap: 10px; /* 간격 축소 */
   }
 }
 
 @media (max-width: 480px) {
   nav.top-navi {
-    gap: 1px;
-    /* 더 작아지면 더 줄이기 */
+    gap: 5px; /* 더 작아지면 더 축소 */
   }
 }
 
-/* header */
+/* header 스타일 */
 header {
   position: fixed;
   top: 0;
@@ -71,47 +73,40 @@ header {
   box-shadow: 0px 1px 9px rgba(0, 0, 0, 0.2);
   font-size: 16px;
 }
-@media (max-width: 700px) {
+
+@media (max-width: 768px) {
   header {
     padding: 12px var(--side-padding-s) 12px 15px;
-    font-size: 14px;
+    font-size: 16px;
   }
 }
+
 header .logo img {
   max-width: 115px;
 }
-@media (max-width: 700px) {
+
+@media (max-width: 480px) {
   header .logo img {
     max-width: 88px;
   }
 }
-header .menu {
-  display: flex;
-  gap: 55px;
-}
-@media (max-width: 900px) {
-  header .menu {
-    gap: 30px;
-  }
-}
-@media (max-width: 700px) {
-  header .menu {
-    gap: 22px;
-  }
-}
 
-@media (max-width: 700px) {
-  header {
-    padding: 12px var(--side-padding-s) 12px 15px;
-    font-size: 14px;
-  }
-}
 
 .backImg {
   width: 100%;
-  max-width: 1200px;
-  min-width: 600px;
-  height: auto;
+  /* max-width: 1200px; */
+  min-width: 768px;
+  background-position: center;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .backImg {
+    max-width: 768px;
+    min-width: 600px; 
+    background-size: contain; /* cover 대신 contain으로 변경해도 됨 */
+    background-position: center center;
+  }
 }
 
 .logocat {
@@ -119,10 +114,28 @@ header .menu {
 }
 
 /* faq */
-.sectionfaq {
-  /* padding-left: var(--side-padding-l);
-  padding-right: var(--side-padding-l); */
+.section-faq {
+  display: flex;
+  flex-direction: column;
+  padding: 10px var(--side-padding-xl) 80px;
+  background-color: #ececec;
 }
+@media (min-width: 768px) {
+  .section-faq {
+    max-width: 768px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .section-faq {
+    min-width: 600px; 
+  }
+}
+/* .sectionfaq {
+  padding-left: var(--side-padding-l);
+  padding-right: var(--side-padding-l);
+} */
 
 /* :root {
   --side-padding-s: 50px;
@@ -229,11 +242,13 @@ details {
   padding: 0.5rem;
   border-radius: 6px;
   background: #f9f9f9;
+  text-align: center;
 }
 
 summary {
   cursor: pointer;
   font-weight: bold;
+  text-align: center;
 }
 
 /* footer */

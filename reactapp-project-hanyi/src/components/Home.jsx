@@ -2,52 +2,49 @@ import { Element } from 'react-scroll';
 
 const Home = () => {
   return (<>
-    <header></header>
     <h2>react 애플리케이션 제작</h2>
     <div className='backImg'>
       {/* 배경사진 1, 2 */}
-      <img src="/images/backgroundimg_tmp.jpeg" alt="배너1" style={{ width: '100%' }} />
-      <img src="/images/listen.jpeg" alt="배너2" style={{ width: '100%' }} />
+      <img src="/images/backgroundimg_tmp.jpeg" alt="배너1" className='backImg' />
+      <img src="/images/listen.jpeg" alt="배너2" className='backImg'/>
     </div>
 
     {/* faqSection */}
-    <div className='sectionfaq'>
+    <div className='section-faq'>
       <Element name="faqSection">
+        <h2>Frequently Asked Question</h2>
         <div>
-          <h2>Frequently Asked Question</h2>
-          <div>
-            <details>
-              <summary>Q1. 어떻게 가입하나요?</summary>
-              <p>회원가입.</p>
-            </details>
+          <details>
+            <summary>Q1. 어떻게 가입하나요?</summary>
+            <p>회원가입.</p>
+          </details>
 
-            <details>
-              <summary>Q2. 로그인하는 방법은요?</summary>
-              <p>로그인.</p>
-            </details>
+          <details>
+            <summary>Q2. 로그인하는 방법은요?</summary>
+            <p>로그인.</p>
+          </details>
 
-            <details>
-              <summary>Q3. 게시판 이용 방법?</summary>
-              <p>게시판.</p>
-            </details>
+          <details>
+            <summary>Q3. 게시판 이용 방법?</summary>
+            <p>게시판.</p>
+          </details>
 
-            <details>
-              <summary>Q4. 실시간 채팅 이용 방법?</summary>
-              <p>실시간채팅 - 채팅 시작하기. 스크롤바 위에.</p>
-            </details>
+          <details>
+            <summary>Q4. 실시간 채팅 이용 방법?</summary>
+            <p>실시간채팅 - 채팅 시작하기. 스크롤바 위에.</p>
+          </details>
 
-            <details>
-              <summary>Q5. 회원정보 수정 방법?</summary>
-              <p>???.</p>
-            </details>
-          </div>
+          <details>
+            <summary>Q5. 회원정보 수정 방법?</summary>
+            <p>???.</p>
+          </details>
         </div>
       </Element>
     </div>
 
     {/* 배경이미지3 */}
-    <div>
-      <img src="/images/ilovechococat.jpg" alt="배너3" />
+    <div className='backImg'>
+      <img src="/images/ilovechococat.jpg" alt="배너3" className='backImg' />
     </div>
 
     {/* 개인정보, 저작권 등 */}
