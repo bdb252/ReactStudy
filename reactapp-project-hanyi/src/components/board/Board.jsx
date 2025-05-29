@@ -1,8 +1,8 @@
 import { Routes, Route } from "react-router-dom";
-import List from './List';
-import View from './View'
-import Write from './Write'
-import Edit from './Edit'
+import List from './BoardList';
+import View from './BoardView'
+import Write from './BoardWrite'
+import Edit from './BoardEdit'
 const Board = () => {
   return (<>
     <h2>자유게시판</h2>

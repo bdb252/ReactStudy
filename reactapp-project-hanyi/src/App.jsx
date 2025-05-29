@@ -1,12 +1,16 @@
 import { Route, Routes, useLocation } from 'react-router-dom';
+import TopNavi from './components/TopNavi';
 import Home from "./components/Home";
 import Regist from './components/members/Regist';
-import TopNavi from './components/TopNavi';
-import Board from './components/board/Board';
+import Login from './components/members/Login';
 import ScrollTop from './components/ScrollTop';
+import BoardList from './components/board/BoardList';
+import BoardView from './components/board/BoardView';
+import BoardWrite from './components/board/BoardWrite';
+import BoardEdit from './components/board/BoardEdit';
 import ChatStart from './components/chat/ChatStart';
 import KakaoTalk from './components/chat/KakaoTalk';
-import Login from './components/members/Login';
+
 
 function App() {
   const location = useLocation();
@@ -18,15 +22,27 @@ function App() {
     <>
       {!hideNavi && <TopNavi />}
       <Routes>
-        <Route path="/" element={<Home></Home>} />
-        <Route path="/regist" element={<Regist></Regist>} />
-        <Route path='/login' element={<Login></Login>} />
-        <Route path='/board' element={<Board></Board>} />
+        <Route path="/" element={<Home />} />
+        <Route path="/regist" element={<Regist />} />
+        <Route path='/login' element={<Login />} />
+
         {/* 자유게시판 */}
         {/* freeList freeView freeWrite */}
+        <Route path='/board'>
+          <Route index element={<BoardList />}/>
+          <Route path='list' element={<BoardList />} />
+          <Route path='view'>
+            <Route path=':id' element={<BoardView />} />
+          </Route>
+          <Route path='write' element={<BoardWrite />} />
+          <Route path='edit'>
+            <Route path=':id' element={<BoardEdit />} />
+          </Route>
+        </Route>
+
         <Route path='/chat'>
           <Route index element={<ChatStart/>}/>
-          <Route path='talk' element={<KakaoTalk></KakaoTalk>}/>
+          <Route path='talk' element={<KakaoTalk />}/>
         </Route>
 
       </Routes>
