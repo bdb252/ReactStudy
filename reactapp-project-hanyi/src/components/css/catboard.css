@@ -1,0 +1,54 @@
+.cat-img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+.cen {
+  text-align: center;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+th {
+  background-color: #f5f5f5;
+}
+
+/* view용 테이블 스타일 */
+#boardTable {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed; /* 고정된 레이아웃 사용 */
+}
+
+#boardTable th, #boardTable td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+#boardTable th {
+  background-color: #6a5acd;
+  color: white;
+  font-size: 14px;
+}
+
+/* 각 th의 고정 너비 설정 */
+#boardTable th:nth-child(1) {
+  width: 80px;
+}
+#boardTable th:nth-child(2) {
+  width: 150px;
+}
+#boardTable th:nth-child(3) {
+  width: 100px;
+}
+#boardTable th:nth-child(4) {
+  width: auto; /* 나머지는 자동 */
+}

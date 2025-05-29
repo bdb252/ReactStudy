@@ -1,18 +1,31 @@
-import './Chat.css';
-import { realtime } from '../../realtimeConfig';
-import { ref, child, set, onValue, push } from 'firebase/database';
+// css파일을 추가하는 경우 src하위에 생성한 후 import해서 적용한다. 
+import '../css/Chat.css';
+// 리얼타임 데이터베이스 연결 및 객체 얻어오기
+import { realtime } from '../../firestoreConfig';
+// 리얼타임을 사용하기 위한 함수 임포트
+import { get, ref, child, set, onValue, push } from 'firebase/database';
+// react에서 제공하는 Hooks
 import { useEffect, useRef, useState } from 'react';
+// router에서 제공하는 Hooks
 import { useSearchParams } from 'react-router-dom';
 
-const scrollAuto = (chatWindow) => {
-  chatWindow.scrollAuto = chatWindow.scrollHeight;
+// 스크롤바를 최하단으로 내려주기 위한 JS함수
+const scrollTop=(chatWindow) => {
+  console.log('scrollTop호출됨');
+  chatWindow.scrollTop = chatWindow.scrollHeight;
 }
 
-const KakaoTalk = () => {
+
+// 컴포넌트 정의
+function ChatMessage() {
+  console.log(realtime);
+
+  // 쿼리스트링으로 전달된 파라미터를 조작할때 사용하는 라우터 훅
   const [searchParams, setSearchParams] = useSearchParams();
   // 방명, 대화명을 파라미터로 얻어온다. 
   const roomId = searchParams.get('roomId');
   const userId = searchParams.get('userId');
+  console.log(roomId, userId);
   // 채팅 내역이 보여지는 부분의 DOM 참조
   const chatWindow = useRef();
   // 채팅 데이터 저장용
@@ -33,81 +46,111 @@ const KakaoTalk = () => {
     });
     console.log('입력성공');
   }
-
+  
+  /*
+  Realtime 리스터 정의. 새롭게 입력된 대화내용을 실시간으로 얻어온다. 
+  채팅 내역이 저장된 'room1' 노드를 참조하는 변수를 생성 후 사용한다. 
+  */ 
+ useEffect(() => {
+  if (!roomId) return;
   const dbRef = ref(realtime, roomId);
-  useEffect(() => {
+  get(dbRef)
+    .then((snapshot) => {
+      if (snapshot.exists()) {
+        console.log("데이터 있음:", snapshot.val());
+      } else {
+        console.log("데이터 없음");
+      }
+    })
+    .catch((error) => {
+      console.error("Firebase 에러:", error);
+    });
+}, [roomId]);
+  const dbRef = ref(realtime,roomId);
+  useEffect(()=>{
+    console.log('onValue 리스너 등록:', roomId);
     // 리스너 생성. 새로운 대화내역이 확인되는 즉시 이벤트가 발생된다. 
-    onValue(dbRef, (snapshot) => {
-
+    onValue(dbRef, (snapshot)=>{
+      console.log('onValue 작동');
       // 새로운 메시지 추가시 스크롤바가 최하단으로 이동하지 않는 문제 해결
       // onValue가 작동한 0.1초후에 스크롤바를 내리는 함수를 강제실행한다. 
       setTimeout(() => {
-        scrollAuto(chatWindow.current);
+        scrollTop(chatWindow.current);
       }, 100);
       let showDiv = [];
-      snapshot.forEach((childSnapshot) => {
+      snapshot.forEach((childSnapshot)=>{
         // const childKey = childSnapshot.key;
         const childData = childSnapshot.val();
         // console.log('리스너', childKey, childData.id, userId);
         // 대화내용은 종류에 따라 좌/우측으로 정렬
-        if (childData.id === userId) {
+        if(childData.id===userId){
           /* 데이터베이스에 등록된 데이터의 아이디와 대화창에 접속한 
-          사용자의 아이디가 일치하면, 본인이므로 '우측'으로 정렬한다. */
+          사용자의 아이디가 일치하면, 본인이므로 '우측'으로 정렬한다. */ 
           showDiv.push(<div className='myMsg'
-            style={{ 'textAlign': 'right' }}>{childData.message}</div>);
+          style={{'textAlign' : 'right'}}>{childData.message}</div>);
         }
-        else {
+        else{
           // 상대방이 보낸 메시지는 좌측으로 정렬한다. 
           showDiv.push(<div className='names'>{childData.id} <br />
             <div className='msgs'>{childData.message}&nbsp;</div>
           </div>);
         }
         // 스크롤바를 최하단으로 내려준다. 근데 한칸씩 밀림
-        // scrollAuto(chatWindow.current);
+        // scrollTop(chatWindow.current);
       });
       // 스테이트를 변경해서 대화내역을 새롭게 렌더링한다. 
       setChatData(showDiv);
     });
   }, []);
 
+  // 이렇게 하면 실시간으로 스크롤바를 최하단으로 내릴 수 있음.
+  // useEffect(() => {
+  //   if (chatWindow.current) {
+  //     scrollTop(chatWindow.current);
+  //   }
+  // }, [chatData]);
 
-  return (<>
-    <h2>실시간 채팅</h2>
-    대화명 : {userId}&nbsp;&nbsp;
-    <button id="closeBtn" onClick={() => { window.self.close(); }}>채팅종료</button>
-    <div id="chatWindow" ref={chatWindow}>{chatData}</div>
+  return(<>
     <div>
-      <form onSubmit={(e) => {
-        e.preventDefault();
-        // event의 target속성으로 폼값을 얻어온다. 
-        let chatRoom = e.target.chatRoom.value;
-        let chatId = e.target.chatId.value;
-        // 빈값 검증
-        if (chatId === '') {
-          alert('대화명을 입력하세요');
-          return;
-        }
-        // 입력한 메시지 얻어오기
-        let message = e.target.message.value;
-        if (message === '') {
-          alert('메세지를 입력하세요');
-          return;
-        }
-        console.log('submit', chatRoom, chatId, message);
-        // 입력한 폼값을 정리해서 Realtime에 입력한다. 
-        messageWrite(chatRoom, chatId, message);
-        // 입력이 완료되면 입력란을 비워준다. 
-        e.target.message.value = '';
-      }}>
-        {/* 룸명과 아이디는 hidden 상자로 표시 */}
-        <input type="hidden" name="chatRoom" value={roomId} />
-        <input type="hidden" name="chatId" value={userId} />
-        {/* 메시지 입력상자와 전송 버튼 표시 */}
-        <input type="text" name='message' />
-        <button type="submit">전송</button>
-      </form>
+      <h2>Realtime 채팅</h2>
+      대화명 : {userId}&nbsp;&nbsp;
+      {/* X버튼을 누르는 것과 같이 창을 닫아준다. */}
+      <button id="closeBtn" onClick={()=>{window.self.close();}}>채팅종료</button>
+      {/* 채팅 내역이 출력되는 부분으로 ref를 사용한다. */}
+      <div id="chatWindow" ref={chatWindow}>{chatData}</div>
+      <div>
+        <form onSubmit={(e)=>{
+          e.preventDefault();
+          // event의 target속성으로 폼값을 얻어온다. 
+          let chatRoom = e.target.chatRoom.value;
+          let chatId = e.target.chatId.value;
+          // 빈값 검증
+          if(chatId===''){
+            alert('대화명을 입력하세요');
+            return ;
+          }
+          // 입력한 메시지 얻어오기
+          let message = e.target.message.value;
+          if(message===''){
+            alert('메세지를 입력하세요');
+            return;
+          }
+          console.log('submit', chatRoom, chatId, message); 
+          // 입력한 폼값을 정리해서 Realtime에 입력한다. 
+          messageWrite(chatRoom, chatId, message);
+          // 입력이 완료되면 입력란을 비워준다. 
+          e.target.message.value = '';
+        }}>
+          {/* 룸명과 아이디는 hidden 상자로 표시 */}
+          <input type="hidden" name="chatRoom" value={roomId} />
+          <input type="hidden" name="chatId" value={userId} />
+          {/* 메시지 입력상자와 전송 버튼 표시 */}
+          <input type="text" name='message' />
+          <button type="submit">전송</button>
+        </form>
+      </div>
     </div>
   </>)
 }
 
-export default KakaoTalk;
+export default ChatMessage;

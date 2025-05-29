@@ -9,7 +9,7 @@ const TopNavi = (props) => {
     if (location.pathname === '/') {
       // 이미 Home인 경우
       scroller.scrollTo('faqSection', {
-        duration: 500,
+        duration: 200,
         delay: 0,
         smooth: 'easeInOutQuart'
       });
@@ -20,11 +20,11 @@ const TopNavi = (props) => {
 
       setTimeout(() => {
         scroller.scrollTo('faqSection', {
-          duration: 500,
+          duration: 400,
           delay: 0,
           smooth: 'easeInOutQuart'
         })
-      }, 10);
+      }, 0);
     }
   }
 
@@ -39,6 +39,7 @@ const TopNavi = (props) => {
           <NavLink to='/regist'>회원가입</NavLink>&nbsp;&nbsp;
           <NavLink to='/login'>로그인</NavLink>&nbsp;&nbsp;
           <NavLink to='/board'>게시판</NavLink>&nbsp;&nbsp;
+          <NavLink to='/catprofile'>고양이</NavLink>&nbsp;&nbsp;
           <NavLink to='/chat'>실시간 채팅</NavLink>&nbsp;&nbsp;
           <a href='/#faq' onClick={handleFAQ}>FAQ</a>
         </nav>

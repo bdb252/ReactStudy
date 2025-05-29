@@ -1,0 +1,146 @@
+/* From Uiverse.io by vinodjangid07 */ 
+.button-topbtn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgb(20, 20, 20);
+  border: none;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 0px 2px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition-duration: 0.3s;
+  overflow: hidden;
+  position: relative;
+}
+
+.svgIcon {
+  width: 12px;
+  transition-duration: 0.3s;
+}
+
+.svgIcon path {
+  fill: white;
+}
+
+.button-topbtn:hover {
+  width: 140px;
+  border-radius: 50px;
+  transition-duration: 0.3s;
+  background-color: rgb(181, 160, 255);
+  align-items: center;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+
+}
+
+.button-topbtn:hover .svgIcon {
+  /* width: 20px; */
+  transition-duration: 0.3s;
+  transform: translateY(-200%);
+}
+
+.button-topbtn::before {
+  position: absolute;
+  bottom: -20px;
+  content: "Go to Top";
+  color: white;
+  /* transition-duration: .3s; */
+  font-size: 0px;
+}
+
+.button-topbtn:hover::before {
+  font-size: 13px;
+  opacity: 1;
+  bottom: unset;
+  /* transform: translateY(-30px); */
+  transition-duration: 0.3s;
+}
+
+/* From Uiverse.io by eirikvold */ 
+.button-msg {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(to bottom, #4dc7d9 0%,#66a6ff 100%);
+  color: white;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  box-shadow: 0px 0px 0px 2px rgba(100, 200, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.button-msg:visited,
+.button-msg:hover,
+.button-msg:focus,
+.button-msg:active {
+  text-decoration: none;
+}
+
+.button-msg:hover {
+  width: 140px;
+  border-radius: 50px;
+  transform: translateY(-3px);
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+.button-msg:active {
+  transform: scale(0.95);
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.button-msg span {
+  display: block;
+  margin-left: 0.4em;
+  transition: all 0.3s;
+}
+
+.button-msg svg {
+  width: 18px;
+  height: 18px;
+  fill: white;
+  transition: all 0.3s;
+}
+
+.button-msg .svg-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin-left: 0.2em;
+  transition: all 0.3s;
+}
+
+.button-msg:hover .svg-wrapper {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.button-msg:hover svg {
+  transform: rotate(45deg);
+}
+
+.button-text {
+  max-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.button-msg:hover .button-text {
+  max-width: 200px;
+  opacity: 1;
+  padding-left: 0.4em;
+}
