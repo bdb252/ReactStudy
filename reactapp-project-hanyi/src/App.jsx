@@ -39,15 +39,15 @@ function App() {
       img:'/images/cheezecat.jpg'
     },
     {no:2, title:'삼색', writer:'threenya', date:'2023-03-03',
-      contents:'JavaScript는 할게 너무 많아요',
+      contents:'삼색이를 구조해서 임시보호중입니다!!',
       img:'/images/threecolorcat.jpg'
     },
     {no:3, title:'턱시도', writer:'tuxedodo', date:'2023-05-05',
-      contents:'Project는 뭘 만들어볼까?',
+      contents:'예쁘지만 엉뚱한 매력이 있습니다',
       img:'/images/tuxedocat.jpg'
     },
     {no:4, title:'깜고', writer:'black', date:'2023-05-05',
-      contents:'Project는 뭘 만들어볼까?',
+      contents:'밤에 보면 눈동자만 보여서 조심해야해요!!',
       img:'/images/blackcat.jpg'
     }
   ]);
