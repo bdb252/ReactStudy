@@ -2,12 +2,18 @@ import { Element } from 'react-scroll';
 
 const Home = () => {
   return (<>
-    <h2>The cat's out of the bag<br/>
-    Black cats are not bad luck <br /></h2>
+    <h2 className='fade-in'>The cat's out of the bag<br />
+      Black cats are not bad luck <br /></h2>
+    <h2 className='fade-in sec'>
+      비밀이 드디어 밝혀졌어요. <br />
+      검은 고양이는 불행이 아닌, 가장 조용한 행운이었단 걸요. <br />
+      편견 속에 숨어 있던 이 작은 생명들, 이제 당신의 사랑을 기다립니다.<br />
+      진짜 행운을 만나보세요♥ </h2>
+
     <div className='backImg'>
       {/* 배경사진 1, 2 */}
       <img src="/images/backgroundimg_tmp.jpeg" alt="배너1" className='backImg' />
-      <img src="/images/listen.jpeg" alt="배너2" className='backImg'/>
+      <img src="/images/listen.jpeg" alt="배너2" className='backImg' />
     </div>
 
     {/* faqSection */}
@@ -27,7 +33,8 @@ const Home = () => {
 
           <details>
             <summary>Q3. 게시판 이용 방법?</summary>
-            <p>게시판.</p>
+            <p>자유게시판에서는 자유로운 이야기를 할 수 있습니다! <br />
+            고양이게시판에서는 보호중인 고양이들을 볼 수 있습니다!</p>
           </details>
 
           <details>

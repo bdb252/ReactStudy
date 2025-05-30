@@ -10,6 +10,7 @@ function Regist(props) {
 
   const [isFormValid, setIsFormValid] = useState(false);
   useEffect(() => {
+    // 우편번호 주소 검색
     const script = document.createElement("script");
     script.src = "//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js";
     script.async = true;
@@ -59,6 +60,7 @@ function Regist(props) {
 
     setIsFormValid(allFilled && passwordMatch);
   }, [formData]);
+  
   const openPostcode = () => {
     new window.daum.Postcode({
       oncomplete: function (data) {
@@ -83,6 +85,9 @@ function Regist(props) {
     }
   };
 
+  const idCheck = () =>{
+
+  }
 
   return (<>
     <div class="container">
@@ -92,7 +97,7 @@ function Regist(props) {
         <label for="username">아이디</label>
         <div class="flex-group">
           <input type="text" id="username" name="username" required onChange={handleChange} />
-          <button type="button" id="checkUsernameBtn">중복확인</button>
+          <button type="button" id="checkUsernameBtn" onSubmit={idCheck}>중복확인</button>
         </div>
         <small id="usernameStatus" class="status-msg"></small>
 
@@ -132,16 +137,10 @@ function Regist(props) {
 
         <label htmlFor="address">기본주소</label>
         <input type="text" id="address" name="address" required onChange={handleChange} readOnly />
-        {/* <label for="zipcode">우편번호</label>
-      <input type="text" id="zipcode" name="zipcode" required onChange={handleChange} />
-
-      <label for="address">기본주소</label>
-      <input type="text" id="address" name="address" required onChange={handleChange} /> */}
 
         <label for="addressDetail">상세주소</label>
         <input type="text" id="addressDetail" name="addressDetail" required onChange={handleChange} />
 
-        {/* <button type="submit" id="submitBtn" disabled>회원가입</button> */}
         <button type="submit" id="submitBtn" disabled={!isFormValid}>회원가입</button>
       </form>
     </div>

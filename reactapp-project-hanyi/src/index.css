@@ -19,6 +19,24 @@ html {
 h2 {
   text-align: center;
   margin-bottom: 20px;
+  padding: 20px;
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 2s ease-in forwards;
+}
+
+.fade-in.sec {
+  animation-delay: 1.5s;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .nav-link {
@@ -42,34 +60,41 @@ header {
   box-shadow: 0px 1px 9px rgba(0, 0, 0, 0.2);
   font-size: 16px;
 }
+
 @media (max-width: 700px) {
   header {
     padding: 12px var(--side-padding-s) 12px 15px;
     /* font-size: 14px; */
   }
 }
+
 header .logo img {
   max-width: 115px;
 }
+
 @media (max-width: 700px) {
   header .logo img {
     max-width: 88px;
   }
 }
+
 header .menu ul {
   display: flex;
   gap: 55px;
 }
+
 @media (max-width: 900px) {
   header .menu ul {
     gap: 30px;
   }
 }
+
 @media (max-width: 700px) {
   header .menu ul {
     gap: 22px;
   }
 }
+
 header .menu ul li a.active {
   opacity: 0.6;
 }
@@ -90,8 +115,9 @@ header .menu ul li a.active {
 @media (min-width: 768px) {
   .backImg {
     max-width: 768px;
-    min-width: 600px; 
-    background-size: contain; /* cover 대신 contain으로 변경해도 됨 */
+    min-width: 600px;
+    background-size: contain;
+    /* cover 대신 contain으로 변경해도 됨 */
     background-position: center center;
   }
 }
@@ -107,6 +133,7 @@ header .menu ul li a.active {
   padding: 10px var(--side-padding-xl) 80px;
   background-color: #ececec;
 }
+
 @media (min-width: 768px) {
   .section-faq {
     max-width: 768px;
@@ -116,9 +143,10 @@ header .menu ul li a.active {
 
 @media (max-width: 600px) {
   .section-faq {
-    min-width: 600px; 
+    min-width: 600px;
   }
 }
+
 /* .sectionfaq {
   padding-left: var(--side-padding-l);
   padding-right: var(--side-padding-l);
@@ -273,7 +301,7 @@ footer .copyright {
 
 
 
-/* From Uiverse.io by Mangesh636 */ 
+/* From Uiverse.io by Mangesh636 */
 .button-gyt {
   background: transparent;
   position: relative;
@@ -291,17 +319,17 @@ footer .copyright {
   text-align: center;
 }
 
-.git{
+.git {
   border: 1px solid rgb(36, 41, 46);
   color: rgb(36, 41, 46);
 }
 
-.youtube{
+.youtube {
   border: 1px solid rgb(255 0 0);
   color: rgb(255 0 0);
 }
 
-.twitter{
+.twitter {
   border: 1px solid rgb(40, 144, 241);
   color: rgb(40, 144, 241);
 }
@@ -354,4 +382,3 @@ footer .copyright {
 .twitter:hover::before {
   box-shadow: inset 0 0 0 10em rgb(40, 144, 241);
 }
- 
