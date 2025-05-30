@@ -2,17 +2,21 @@ import { Element } from 'react-scroll';
 
 const Home = () => {
   return (<>
-    <h2 className='fade-in'>The cat's out of the bag<br />
-      Black cats are not bad luck <br /></h2>
-    <h2 className='fade-in sec'>
-      비밀이 드디어 밝혀졌어요. <br />
-      검은 고양이는 불행이 아닌, 가장 조용한 행운이었단 걸요. <br />
-      편견 속에 숨어 있던 이 작은 생명들, 이제 당신의 사랑을 기다립니다.<br />
-      진짜 행운을 만나보세요♥ </h2>
-
+    <div className='heroSection backImg'>
+      <img src="/images/backgroundimg_tmp.jpg" alt="배너1" className='backImg fade-in-img' />
+      <div className="textOverlay">
+        <h2 className='fade-in'>The cat's out of the bag<br />
+          Black cats are not bad luck <br /><br /></h2>
+        <h2 className='fade-in sec'>
+          <br />비밀이 드디어 밝혀졌어요. <br />
+          검은 고양이는 불행이 아닌, 가장 조용한 행운이었단 걸요. <br /></h2>
+        <h2 className='fade-in third'>
+          <br />편견 속에 숨어 있던 생명들,<br /> 이제 당신의 사랑을 기다립니다.<br />
+          진짜 행운을 만나보세요♥ </h2>
+      </div>
+    </div>
     <div className='backImg'>
-      {/* 배경사진 1, 2 */}
-      <img src="/images/backgroundimg_tmp.jpeg" alt="배너1" className='backImg' />
+      {/* 배경사진 2 */}
       <img src="/images/listen.jpeg" alt="배너2" className='backImg' />
     </div>
 
@@ -33,8 +37,12 @@ const Home = () => {
 
           <details>
             <summary>Q3. 게시판 이용 방법?</summary>
-            <p>자유게시판에서는 자유로운 이야기를 할 수 있습니다! <br />
-            고양이게시판에서는 보호중인 고양이들을 볼 수 있습니다!</p>
+            <p>깜냥게시판에서는 여러분의 고양이 이야기를 자유롭게 나누어주세요! <br />
+                입양 후기나 고양이 자랑은 언제나 환영입니다◉_◉ <br /><br />
+                집사질문함은 집사님들끼리 간단하게 질의응답을 할 수 있는 게시판입니다. <br />
+                병원, 사료, 장난감 등등 다양한 의견을 쉽고 빠르게 얻어보세요! <br /><br />
+              냥생상담소는 현재 보호중인 고양이들을 볼 수 있습니다. <br />
+              입양 문의는 해당 게시글을 참고해주세요. </p>
           </details>
 
           <details>

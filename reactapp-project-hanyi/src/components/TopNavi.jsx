@@ -34,7 +34,8 @@ const TopNavi = (props) => {
 
   const logout_handler = () => {
     setCookie('user', '', -1);
-    window.location.reload();
+    // window.location.reload();
+    navigate('/');
   }
 
   return (<>
@@ -46,16 +47,17 @@ const TopNavi = (props) => {
         <nav className="menu nav-link">
           <NavLink to='/'>Home</NavLink>&nbsp;&nbsp;
           {user ? (<>
-            <NavLink>회원정보수정</NavLink>&nbsp;&nbsp;
+            <NavLink to='/myinfoedit'>회원정보수정</NavLink>&nbsp;&nbsp;
             <span onClick={logout_handler} style={{ cursor: 'pointer', color: 'blue' }}>로그아웃</span>&nbsp;&nbsp;
           </>) :
             (<>
               <NavLink to='/regist'>회원가입</NavLink> &nbsp;&nbsp;
               <NavLink to='/login'>로그인</NavLink>&nbsp;&nbsp;
             </>)}
-          <NavLink to='/board'>게시판</NavLink>&nbsp;&nbsp;
-          <NavLink to='/catprofile'>고양이</NavLink>&nbsp;&nbsp;
-          <NavLink to='/chat'>실시간 채팅</NavLink>&nbsp;&nbsp;
+          <NavLink to='/board'>깜냥게시판</NavLink>&nbsp;&nbsp;
+          <NavLink to='/qnamodal'>집사질문함</NavLink>&nbsp;&nbsp;
+          <NavLink to='/catprofile'>냥생상담소</NavLink>&nbsp;&nbsp;
+          <NavLink to='/chat'>캬오오톡</NavLink>&nbsp;&nbsp;
           <a href='/#faq' onClick={handleFAQ}>FAQ</a>
         </nav>
       </header>

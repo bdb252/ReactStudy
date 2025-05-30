@@ -6,7 +6,9 @@ const Login = () => {
     const username = e.target.name.value;
     const password = e.target.pass.value;
 
-    if (username === 'tmp' && password === '1234') {
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+
+    if (storedUser && storedUser.username === username && storedUser.password === password) {
       setCookie('user', username, 1);
       window.location.href = '/';
     }
@@ -25,6 +27,7 @@ const Login = () => {
       <label htmlFor="userpass">Password
         <input type="text" name="pass" id="userpass" />
       </label>
+      <br />
       <button type="submit">로그인</button>
     </form>
   </>

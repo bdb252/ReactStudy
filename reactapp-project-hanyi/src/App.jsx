@@ -4,11 +4,13 @@ import TopNavi from './components/TopNavi';
 import Home from "./components/Home";
 import Regist from './components/members/Regist';
 import Login from './components/members/Login';
+import MemberEdit from './components/members/MemberEdit'
 import ScrollTop from './components/ScrollTop';
 import BoardList from './components/board/BoardList';
 import BoardView from './components/board/BoardView';
 import BoardWrite from './components/board/BoardWrite';
 import BoardEdit from './components/board/BoardEdit';
+import QnaModal from './components/QnaModal';
 import CatList from './components/catprofile/CatList';
 import CatView from './components/catprofile/CatView';
 import ChatStart from './components/chat/ChatStart';
@@ -57,7 +59,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/regist" element={<Regist />} />
         <Route path='/login' element={<Login />} />
-
+        <Route path='/myinfoedit' element={<MemberEdit/>}/>
         {/* 자유게시판 */}
         {/* freeList freeView freeWrite */}
         <Route path='/board'>
@@ -72,7 +74,9 @@ function App() {
           </Route>
         </Route>
 
-        {/* 정보게시판 */}
+        {/* qna 게시판 */}
+        <Route path='/qnamodal' element={<QnaModal />}></Route>
+        {/* 자료게시판 */}
         <Route path='/catprofile'>
           <Route index element={<CatList catData={boardData}/>} />
           <Route path='catlist' element={<CatList catData={boardData}/>} />

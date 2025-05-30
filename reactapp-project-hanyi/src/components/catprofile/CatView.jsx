@@ -35,7 +35,7 @@ function CatView(props) {
             <td>{vi.date}</td>
           </tr>
           <tr>
-            <td><img src={vi.img} alt="cat" /></td>
+            <td colSpan={2}><img src={vi.img} alt="cat" /></td>
           </tr>
           <tr>
             <td colSpan={2} className='cen'>{vi.contents}</td>

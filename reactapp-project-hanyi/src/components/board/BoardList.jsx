@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { firestore } from "../../firestoreConfig";
 import { doc, setDoc, getDoc, getDocs, collection } from "firebase/firestore";
 import { Link } from "react-router-dom";
-
+import '../css/freeboard.css';
 function BoardList() {
   console.log('firestore', firestore);
   // 파이어스토어 데이터를 저장할 스테이트
@@ -39,10 +39,10 @@ function BoardList() {
   return (<>
     <div className="App">
       <h2>자유게시판</h2>
-      <nav>
+      <nav className="free-nav">
         <Link to='write'>글쓰기</Link>
       </nav>
-      <table border='1' className="table table-bordered">
+      <table border='1' className="freeTable">
         <thead>
           <tr className="text-center">
             <th>제목</th>

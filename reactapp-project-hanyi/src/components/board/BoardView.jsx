@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { firestore } from "../../firestoreConfig";
-import { doc, setDoc, getDoc, getDocs, collection } from "firebase/firestore";
-import { Link, useParams } from "react-router-dom";
+import { doc, setDoc, getDoc, deleteDoc, collection } from "firebase/firestore";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import '../css/freeboard.css';
 
 function BoardView() {
   console.log('firestore', firestore);
@@ -24,29 +25,47 @@ function BoardView() {
     fetchPost();
   }, [id]);
 
+  const navigate = useNavigate();
+  const delete_handler = async () => {
+    const confirmDelete = window.confirm("정말 삭제하시겠습니까?");
+    if (!confirmDelete) return;
+
+    try {
+      await deleteDoc(doc(firestore, "boardData", id));
+      alert("게시글이 삭제되었습니다.");
+      navigate("/board"); // 삭제 후 목록으로 이동
+    } catch (error) {
+      console.error("삭제 오류:", error);
+      alert("삭제 중 오류가 발생했습니다.");
+    }
+  };
+  
   return (<>
     {post && (
       <div className="App">
         <h2>자유게시판</h2>
-        <nav>
+        <nav className="free-nav">
           <Link to='/board'>목록</Link>&nbsp;&nbsp;
-          <Link to='edit'>수정</Link>&nbsp;&nbsp;
-          <Link to='delete'>삭제</Link>
+          <Link to={'/board/edit/' + id}>수정</Link>&nbsp;&nbsp;
+          <button onClick={delete_handler}>삭제</button>
         </nav>
-        <table border='1' className="table table-bordered">
-          <thead>
-            <tr className="text-center">
-              <th>제목</th>
-              <th>내용</th>
-              <th>이름</th>
-              <th>날짜</th>
-            </tr>
-          </thead>
+        <table border='1' className="freeTable">
           <tbody>
-            <h2>{post.title}</h2>
-            <p>{post.contents}</p>
-            <p>작성자: {post.writer}</p>
-            <p>날짜: {post.regdate}</p>
+            <tr>
+              <td>작성자</td>
+              <td>{post.writer}</td>
+            </tr>
+            <tr>
+              <td>제목</td>
+              <td>{post.title}</td>
+            </tr>
+            <tr>
+              <td>날짜</td>
+              <td>{post.regdate}</td>
+            </tr>
+            <tr>
+              <td colSpan={2}>{post.contents}</td>
+            </tr>
           </tbody>
         </table>
       </div>

@@ -1,0 +1,45 @@
+.freeTable {
+  width: 100%;
+  max-width: 700px;
+  margin: 30px auto;
+  border-collapse: collapse;
+  font-family: 'Cafe24Ssurroundair', sans-serif;
+  background-color: #fffaf7;
+  border: 2px solid #f2dede;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+}
+
+.freeTable td {
+  border: 1px solid #f0d6d6;
+  padding: 15px 20px;
+  font-size: 16px;
+  color: #5c3c2d;
+  background-color: #fffdfc;
+}
+
+.freeTable td:first-child {
+  background-color: #fbecec; /* 모든 첫 번째 열에 동일 적용 */
+  font-weight: bold;
+  width: 120px;
+  text-align: right;
+}
+
+.freeTable td[colspan="2"] {
+  background-color: #fef9f7;
+  font-size: 15px;
+  line-height: 1.6;
+  text-align: left;
+  color: #4d3a33;
+  white-space: pre-line;
+}
+
+.freeTable::before {
+  content: "🐾";
+  display: block;
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 10px;
+  color: #000;
+}

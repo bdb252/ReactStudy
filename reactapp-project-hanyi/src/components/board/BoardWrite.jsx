@@ -58,7 +58,7 @@ function BoardWrite() {
 
         navigate("/board");
       }}>
-        <table className="table table-bordered table-striped">
+        <table className="freeTable">
           <tbody>
           <tr>
             <td>컬렉션(테이블)</td>
@@ -84,7 +84,7 @@ function BoardWrite() {
           </tr>
           </tbody>
         </table>
-        <button type="submit">입력</button>
+        <button type="submit">글쓰기</button>
       </form>  
     </div>
   </>)
