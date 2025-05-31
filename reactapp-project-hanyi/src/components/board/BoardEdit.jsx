@@ -2,6 +2,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from "react";
 import { firestore } from "../../firestoreConfig";
 import { doc, setDoc, getDoc, getDocs, collection } from "firebase/firestore";
+import '../css/blackcatView.css';
 
 function App() {
   // 날짜 생성
@@ -49,13 +50,13 @@ function App() {
   };
   
   return (<>
-    <div className="App">
+    <div className="boardView">
       <h3>게시물 수정하기</h3>
       <nav>
         <Link to="/board">목록</Link>
       </nav>
       <form onSubmit={handleSubmit}>
-        <table className="table table-bordered table-striped">
+        <table className="freeTable">
           <tbody>
             <tr>
               <td>제목</td>

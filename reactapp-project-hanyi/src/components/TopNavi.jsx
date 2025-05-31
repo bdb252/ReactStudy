@@ -39,7 +39,7 @@ const TopNavi = (props) => {
   }
 
   return (<>
-    <div className="nav-wrapper">
+    <div>
       <header>
         <a href="/" className="logo">
           <img src="/images/catwithguitar.png" alt="로고" className="logocat" />

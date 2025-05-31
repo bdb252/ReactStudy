@@ -36,19 +36,33 @@ function App() {
       하고 나타나기도 해요.
       그리고 일부 카오스냥이들 중에도 이 예쁜 색과 줄무늬가 같이 나타나는 경우가 있는데, 
       그런 친구들 중엔 암컷도 종종 있답니다. 물론 여전히 레어템이긴 하지만요!`,
-      img:'/images/cheezecat.jpg'
+      img:'/images/cheezecat.jpg',
+      filename:'입양신청서.docx',
+      filePath:'boardFiles/입양신청서.docx'
     },
     {no:2, title:'삼색', writer:'threenya', date:'2023-03-03',
       contents:'삼색이를 구조해서 임시보호중입니다!!',
-      img:'/images/threecolorcat.jpg'
+      img:'/images/threecolorcat.jpg',
+      filename:'입양신청서.docx',
+      filePath:'boardFiles/입양신청서.docx'
     },
     {no:3, title:'턱시도', writer:'tuxedodo', date:'2023-05-05',
       contents:'예쁘지만 엉뚱한 매력이 있습니다',
-      img:'/images/tuxedocat.jpg'
+      img:'/images/tuxedocat.jpg',
+      filename:'입양신청서.docx',
+      filePath:'boardFiles/입양신청서.docx'
     },
     {no:4, title:'깜고', writer:'black', date:'2023-05-05',
       contents:'밤에 보면 눈동자만 보여서 조심해야해요!!',
-      img:'/images/blackcat.jpg'
+      img:'/images/blackcat.jpg',
+      filename:'입양신청서.docx',
+      filePath:'boardFiles/입양신청서.docx'
+    },
+    {no:5, title:'깜고', writer:'black', date:'2023-05-05',
+      contents:'밤에 보면 눈동자만 보여서 조심해야해요!!',
+      img:'/images/blackcat.jpg',
+      filename:'입양신청서.docx',
+      filePath:'boardFiles/입양신청서.docx'
     }
   ]);
 

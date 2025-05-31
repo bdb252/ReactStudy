@@ -1,4 +1,104 @@
-.freeTable {
+.boardList {
+  max-width: 800px;
+  margin: 60px auto;
+  background-color: #2c2c2c;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.7);
+  color: #f2f2f2;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.boardList h2 {
+  text-align: center;
+  color: #ffcc00;
+  margin-bottom: 20px;
+}
+
+
+/* 글쓰기 버튼 */
+.free-nav {
+  text-align: right;
+  margin-bottom: 15px;
+}
+
+.free-nav a {
+  background-color: #ffcc00;
+  color: #1a1a1a;
+  padding: 8px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.free-nav a:hover {
+  background-color: #e6b800;
+}
+
+/* 각 행(td)의 텍스트 중앙 정렬용 */
+.cen {
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* 제목에 링크 스타일 지정 */
+.freeTable td a {
+  color: #ffcc00;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.2s ease;
+}
+
+.freeTable td a:hover {
+  color: #ffd633;
+  text-decoration: underline;
+}
+
+.freeTable td {
+  transition: none;
+}
+
+/* 행 간격 및 마우스 호버 효과 */
+.freeTable tr {
+  transition: background-color 0.2s ease;
+}
+
+/* .freeTable tr:hover {
+  background-color: #3a3a3a;
+} */
+
+/* 테이블 전체 */
+/* .freeTable {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #1e1e1e;
+}
+
+.freeTable th,
+.freeTable td {
+  padding: 12px;
+  border: 1px solid #444;
+  text-align: center;
+}
+ */
+.freeTable th {
+  background-color: #f0f0f0;
+  color: #ffcc00;
+  font-weight: bold;
+}
+/*  
+.freeTable tr:nth-child(even) {
+  background-color: #2a2a2a;
+}
+
+.freeTable tr:hover {
+  background-color: #3a3a3a;
+  transition: background-color 0.2s ease;
+} */
+
+/* 수정 전 */
+/* .freeTable {
   width: 100%;
   max-width: 700px;
   margin: 30px auto;
@@ -20,7 +120,7 @@
 }
 
 .freeTable td:first-child {
-  background-color: #fbecec; /* 모든 첫 번째 열에 동일 적용 */
+  background-color: #fbecec;
   font-weight: bold;
   width: 120px;
   text-align: right;
@@ -42,4 +142,4 @@
   font-size: 32px;
   margin-bottom: 10px;
   color: #000;
-}
+} */

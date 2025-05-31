@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { firestore } from "../../firestoreConfig";
 import { doc, setDoc, getDoc, deleteDoc, collection } from "firebase/firestore";
 import { Link, useParams, useNavigate } from "react-router-dom";
-import '../css/freeboard.css';
+import '../css/blackcatView.css';
 
 function BoardView() {
   console.log('firestore', firestore);
@@ -42,12 +42,12 @@ function BoardView() {
   
   return (<>
     {post && (
-      <div className="App">
+      <div className="boardView">
         <h2>자유게시판</h2>
         <nav className="free-nav">
           <Link to='/board'>목록</Link>&nbsp;&nbsp;
           <Link to={'/board/edit/' + id}>수정</Link>&nbsp;&nbsp;
-          <button onClick={delete_handler}>삭제</button>
+          <button onClick={delete_handler} className="delete-btn">삭제</button>
         </nav>
         <table border='1' className="freeTable">
           <tbody>

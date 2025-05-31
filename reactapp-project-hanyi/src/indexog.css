@@ -1,11 +1,20 @@
-/* 기본 배경과 텍스트 */
 body {
-  background-color: #1a1a1a;
-  font-family: 'Noto Sans KR', sans-serif;
+  background-color: #f4f4f4;
+  /* background-color: #000000; */
+  padding: 40px;
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+.container {
+  max-width: 480px;
+  margin: auto;
+  background: white;
+  padding: 30px 40px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 h2 {
@@ -13,23 +22,6 @@ h2 {
   margin-bottom: 20px;
   padding: 25px;
 }
-
-.container {
-  max-width: 600px;
-  margin: 40px auto;
-  background-color: #ffffff;
-  padding: 30px;
-  border-radius: 16px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.8);
-}
-
-.container h2 {
-  text-align: center;
-  color: #ffcc00;
-  margin-bottom: 20px;
-}
-
-/* 배경 이미지 */
 
 .heroSection {
   position: relative;
@@ -52,7 +44,8 @@ h2 {
   top: 20%;
   left: 50%;
   transform: translateX(-50%);
-  color: #f2f2f2;
+  color: #342f3f;
+  /* color: #bbb2cf; */
   text-align: center;
   padding: 20px;
   max-width: 90%;
@@ -215,85 +208,78 @@ header .menu ul li a.active {
   }
 }
 
-/* 폼 요소 공통 */
 .signup-form label {
   display: block;
   margin-top: 15px;
-  margin-bottom: 5px;
   font-weight: bold;
-  color: #ffcc00;
 }
 
 .signup-form input,
-.signup-form select {
+.signup-form select,
+.signup-form button {
   width: 100%;
   padding: 10px;
-  border: 1px solid #555;
-  border-radius: 8px;
-  background-color: #1e1e1e;
-  color: #f2f2f2;
-  font-size: 15px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
-.signup-form input:focus {
-  outline: none;
-  border-color: #ffcc00;
-  box-shadow: 0 0 5px #ffcc00;
-}
-
-/* 버튼 */
 .signup-form button {
-  background-color: #ffcc00;
-  color: #1a1a1a;
-  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
   border: none;
-  border-radius: 8px;
-  font-weight: bold;
+  font-size: 16px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
-.signup-form button:hover {
-  background-color: #e6b800;
+.signup-form button:disabled {
+  background-color: #999;
+  cursor: not-allowed;
 }
 
-#submitBtn {
-  margin-top: 20px;
-  padding: 8px 40px; 
-}
-/* 중복확인/주소검색 버튼 */
-.flex-group button {
-  margin-left: 10px;
-  padding: 8px 12px;
-  flex-shrink: 0;
-  white-space: nowrap;
-}
-
-/* flex 그룹 */
-.flex-group {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-}
-
-.flex-group input,
-.flex-group select {
-  flex: 1;
-  min-width: 0;  /* flex 아이템이 줄어들 수 있도록 */
+.signup-form button:hover:not(:disabled) {
+  background-color: #0056b3;
 }
 
 .status-msg {
-  font-size: 12px;
-  margin-top: 5px;
-  color: #aaa;
+  font-size: 0.9em;
+  color: green;
 }
 
-/* 비밀번호 일치 오류 메시지 */
-.signup-form small {
-  display: block;
-  margin-top: 5px;
+.flex-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
+.flex-group input[type="text"] {
+  flex-grow: 1;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  min-width: 0;
+  /* 중요: 넘침 방지 */
+}
+
+.flex-group button {
+  width: 100px;
+  /* 버튼 너비 고정 */
+  padding: 10px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.flex-group button:hover {
+  background-color: #0056b3;
+}
 
 .app-container {
   display: flex;
@@ -434,67 +420,4 @@ footer .copyright {
 
 .twitter:hover::before {
   box-shadow: inset 0 0 0 10em rgb(40, 144, 241);
-}
-
-/* 로그인 */
-/* 로그인 전체 영역 */
-.login-container {
-  max-width: 400px;
-  margin: 60px auto;
-  background-color: #ffffff;
-  padding: 30px;
-  border-radius: 16px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.8);
-  font-family: 'Noto Sans KR', sans-serif;
-}
-
-.login-container h2 {
-  text-align: center;
-  color: #ffcc00;
-  margin-bottom: 30px;
-}
-
-/* 라벨과 인풋 정렬 */
-.login-container label {
-  display: block;
-  margin-bottom: 15px;
-  color: #ffcc00;
-  font-weight: bold;
-}
-
-.login-container input {
-  width: 100%;
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #555;
-  background-color: #1e1e1e;
-  color: #f2f2f2;
-  font-size: 15px;
-  margin-top: 6px;
-}
-
-.login-container input:focus {
-  outline: none;
-  border-color: #ffcc00;
-  box-shadow: 0 0 5px #ffcc00;
-}
-
-/* 로그인 버튼 */
-.login-container button {
-  display: block;
-  width: 100%;
-  padding: 14px;
-  background-color: #ffcc00;
-  color: #1a1a1a;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  margin-top: 20px;
-  transition: background-color 0.3s ease;
-}
-
-.login-container button:hover {
-  background-color: #e6b800;
 }
