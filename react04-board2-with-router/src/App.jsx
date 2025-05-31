@@ -8,6 +8,7 @@ import Write from './components/board/Write.jsx';
 import View from './components/board/View.jsx';
 import Edit from './components/board/Edit.jsx';
 import NotFound from './components/common/NotFound.jsx';
+import Delete from "./components/board/Delete.jsx";
 // 스테이트 사용을 위한 임포트
 import { useState } from "react";
 
@@ -61,9 +62,9 @@ function App() {
               navigate = {navigate} nowDate = {nowDate} />}
             />
           </Route>
-          {/* <Route path="/delete/:no" element={
+          <Route path="/delete/:no" element={
             <Delete boardData={boardData} setBoardData={setBoardData} />
-          } /> */}
+          } />
           <Route path='*' element = {<NotFound />} />
         </Routes>
       </div>

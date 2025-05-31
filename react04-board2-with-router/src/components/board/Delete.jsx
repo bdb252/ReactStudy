@@ -1,10 +1,9 @@
-import { Link, useParams } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 
 function Delete(props) {
   const boardData = props.boardData;
   const setBoardData = props.setBoardData;
-  const navigate = props.navigate;
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   var params = useParams();
   let pno = params.no;

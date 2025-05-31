@@ -1,4 +1,5 @@
 import { Link, useNavigate, useParams, useSearchParams } from "react-router-dom"
+import Delete from "./Delete";
 
 function View(props) {
   /**
@@ -8,9 +9,8 @@ function View(props) {
   */ 
   var params = useParams();
   console.log('파라미터', params.no);
-
-  // var navigate = useNavigate();
-  //
+  
+  var navigate = useNavigate();
   // console.log('length:', props.boardData.length);
   // console.log('no:', props.no);
   // console.log('nextNo:', params.nextNo);
@@ -83,6 +83,7 @@ function View(props) {
     // console.log('nextNum:',nextNum);
     // navigate("/view/"+nextNum);
   }
+
   return (<>
     <header>
       <h2>게시판-읽기</h2>
@@ -90,7 +91,11 @@ function View(props) {
     <nav>
       <Link to="/list">목록</Link>&nbsp;
       <Link to={"/edit/"+params.no}>수정</Link>&nbsp;
-      <Link to="/delete">삭제</Link>
+      {/* <button onClick={(e)=>{
+        e.preventDefault();
+        Delete(props);
+      }}>삭제</button> */}
+      <Link to={'/delete/'+params.no}>삭제</Link>
     </nav>
     <article>
     <table id="boardTable">
