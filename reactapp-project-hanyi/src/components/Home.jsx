@@ -1,4 +1,5 @@
 import { Element } from 'react-scroll';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (<>
@@ -17,13 +18,15 @@ const Home = () => {
     </div>
     <div className='backImg'>
       {/* 배경사진 2 */}
-      <img src="/images/listen.jpeg" alt="배너2" className='backImg' />
+      <Link to='catprofile'>
+        <img src="/images/listen.jpeg" alt="배너2" className='backImg' />
+      </Link>
     </div>
 
     {/* faqSection */}
     <div className='section-faq'>
       <Element name="faqSection">
-        <h2>Frequently Asked Question</h2>
+        <h2 style={{marginTop: "20px"}}>Frequently Asked Question</h2>
         <div>
           <details>
             <summary>Q1. 어떻게 가입하나요?</summary>
@@ -38,9 +41,9 @@ const Home = () => {
           <details>
             <summary>Q3. 게시판 이용 방법?</summary>
             <p>깜냥게시판에서는 여러분의 고양이 이야기를 자유롭게 나누어주세요! <br />
-                입양 후기나 고양이 자랑은 언제나 환영입니다◉_◉ <br /><br />
-                집사질문함은 집사님들끼리 간단하게 질의응답을 할 수 있는 게시판입니다. <br />
-                병원, 사료, 장난감 등등 다양한 의견을 쉽고 빠르게 얻어보세요! <br /><br />
+              입양 후기나 고양이 자랑은 언제나 환영입니다◉_◉ <br /><br />
+              집사질문함은 집사님들끼리 간단하게 질의응답을 할 수 있는 게시판입니다. <br />
+              병원, 사료, 장난감 등등 다양한 의견을 쉽고 빠르게 얻어보세요! <br /><br />
               냥생상담소는 현재 보호중인 고양이들을 볼 수 있습니다. <br />
               입양 문의는 해당 게시글을 참고해주세요. </p>
           </details>
@@ -60,7 +63,9 @@ const Home = () => {
 
     {/* 배경이미지3 */}
     <div className='backImg'>
-      <img src="/images/ilovechococat.jpg" alt="배너3" className='backImg' />
+      <Link to='qnamodal'>
+        <img src="/images/ilovechococat.jpg" alt="배너3" className='backImg' />
+      </Link>
     </div>
 
     {/* 개인정보, 저작권 등 */}

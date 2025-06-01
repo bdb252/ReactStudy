@@ -30,7 +30,7 @@ const CommentBtn = (props) => {
   return (
   <div style={{textAlign:'center'}}>
     {/* 댓글 작성 버튼 */}
-    <button className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#commentModal" onClick={() => props.newOpenModal()}>
+    <button className="btn btn-yellow" data-bs-toggle="modal" data-bs-target="#commentModal" onClick={() => props.newOpenModal()}>
       댓글 작성
     </button>
   </div>);
@@ -60,7 +60,7 @@ function ModalWindow(props) {
           </div>
           <div className="modal-footer">
             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-            <button type="button" className="btn btn-primary" onClick={props.saveComment} data-bs-dismiss="modal">작성</button>
+            <button type="button" className="btn btn-yellow" onClick={props.saveComment} data-bs-dismiss="modal">작성</button>
           </div>
         </div>
       </div>

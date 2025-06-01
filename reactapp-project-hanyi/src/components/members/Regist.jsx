@@ -134,7 +134,7 @@ function Regist(props) {
             onChange={handleChange} value={formData.username} />
           <button type="button" id="checkUsernameBtn" onClick={idCheck}>중복확인</button>
         </div>
-        <small id="usernameStatus" class="status-msg"></small>
+        {/* <small id="usernameStatus" class="status-msg"></small> */}
 
         <label for="password">비밀번호</label>
         <input type="password" id="password" name="password" required

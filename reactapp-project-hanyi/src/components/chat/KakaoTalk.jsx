@@ -6,6 +6,17 @@ import { ref as storageRef, uploadBytes, getDownloadURL } from 'firebase/storage
 import { useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
+const nowDate = () => {
+  let dateObj = new Date();
+  var year = dateObj.getFullYear();
+  var month = ("0" + (1 + dateObj.getMonth())).slice(-2);
+  var day = ("0" + dateObj.getDate()).slice(-2);
+  var hour = ("0" + dateObj.getHours()).slice(-2);
+  var min = ("0" + dateObj.getMinutes()).slice(-2);
+  var sec = ("0" + dateObj.getSeconds()).slice(-2);
+  return year + "-" + month + "-" + day + " " + hour + ":" + min + ":" + sec;
+}
+
 // 스크롤바를 최하단으로 내려주기 위한 JS함수
 const scrollTop = (chatWindow) => {
   console.log('scrollTop호출됨');
@@ -43,14 +54,11 @@ function ChatMessage() {
     // 고유키 생성. 데이터 저장시 중복되지 않는 일련번호와 같이 사용된다.  
     console.log('chatMessage:', chatMessage);
     const newPostKey = push(child(realRef(realtime), 'tempValue')).key;
-    /**
-    데이터 저장시 '방명'이 최상위 node가 되고, 하위에 '고유키'로 구분하여 
-    대화내용을 저장한다. 입력된 순서는 지켜지므로 별도의 정렬은 필요없다. 
-    입력데이터는 대화명과 내용으로 구성된다.  
-    */
+    const time = nowDate();
     set(realRef(realtime, chatRoom + '/' + newPostKey), {
       id: chatId,
-      message: chatMessage
+      message: chatMessage,
+      date: time
     });
     console.log('입력성공');
   }
@@ -84,8 +92,37 @@ function ChatMessage() {
       // 새로운 메시지 추가시 스크롤바가 최하단으로 이동하지 않는 문제 해결
       // onValue가 작동한 0.1초후에 스크롤바를 내리는 함수를 강제실행한다. 
       setTimeout(() => {
-        scrollTop(chatWindow.current);
+        // 채팅방에 모든 img 태그 가져오기기
+        const images = chatWindow.current ? chatWindow.current.querySelectorAll('img') : [];
+        // 이미지가 있으면
+        if (images.length > 0) {
+          // 로딩 완료료된 이미지의 수
+          let loadedCnt = 0;
+          images.forEach((img) => {
+            if (img.complete) {
+              loadedCnt++;
+            }
+            else {
+              img.onload = () => {
+                loadedCnt++;
+                // 로딩 완료된 이미지수 = 이미지 개수수
+                if (loadedCnt === images.length) {
+                  scrollTop(chatWindow.current);
+                }
+              };
+            }
+          });
+          // 모두 로드된 경우 바로 스크롤
+          if (loadedCnt === images.length) {
+            scrollTop(chatWindow.current);
+          }
+        }
+        else {
+          // 이미지가 없으면 바로 스크롤롤
+          scrollTop(chatWindow.current);
+        }
       }, 100);
+
       let showDiv = [];
       snapshot.forEach((childSnapshot) => {
         // const childKey = childSnapshot.key;
@@ -100,7 +137,8 @@ function ChatMessage() {
             <div className='myMsg' style={{ textAlign: 'right' }}>
               {isImage(childData.message)
                 ? <img src={childData.message} alt="uploaded" style={{ maxWidth: '200px' }} />
-                : childData.message}
+                : <div className="bubble">{childData.message}</div>}
+              <div className="chat-time right">{childData.date}</div>
             </div>
           );
         }
@@ -115,7 +153,9 @@ function ChatMessage() {
               <div className='msgs'>
                 {isImage(childData.message)
                   ? <img src={childData.message} alt="uploaded" style={{ maxWidth: '200px' }} />
-                  : childData.message}
+                  : <div className="bubble">{childData.message}</div>}
+                {/* : childData.message} */}
+                <div className="chat-time left">{childData.date}</div>
                 &nbsp;
               </div>
             </div>
@@ -135,14 +175,14 @@ function ChatMessage() {
   const imageRef1 = storageRef(storage, 'images1');
   return (<>
     <div>
-      <h2>Realtime 채팅</h2>
+      <h2 className='chatname'>Realtime 채팅</h2>
       대화명 : {userId}&nbsp;&nbsp;
       {/* X버튼을 누르는 것과 같이 창을 닫아준다. */}
       <button id="closeBtn" onClick={() => { window.self.close(); }}>채팅종료</button>
       {/* 채팅 내역이 출력되는 부분으로 ref를 사용한다. */}
-      <div id="chatWindow" realRef={chatWindow}>{chatData}</div>
+      <div id="chatWindow" ref={chatWindow}>{chatData}</div>
       <div>
-        <form onSubmit={(e) => {
+        <form className='btn' onSubmit={(e) => {
           e.preventDefault();
           // event의 target속성으로 폼값을 얻어온다. 
           let chatRoom = e.target.chatRoom.value;
@@ -170,6 +210,7 @@ function ChatMessage() {
           {/* 메시지 입력상자와 전송 버튼 표시 */}
           <input type="text" name='message' />
           <button type="submit">전송</button> <br />
+
           {/* 파일 전송 */}
           <input type="file" name="myfile" onChange={(e) => {
             console.log('files 프로퍼티', e.target.files);

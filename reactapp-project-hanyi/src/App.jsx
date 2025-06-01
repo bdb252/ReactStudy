@@ -23,7 +23,31 @@ function App() {
   const hideNavi = talkPath.includes(location.pathname);
 
   const [boardData, setBoardData] = useState([
-    {no:1, title:'치즈', writer:'cheezenya', date:'2023-01-01',
+    {no:1, title:'깜고', writer:'black', date:'2023-05-05',
+      contents:'밤에 보면 눈동자만 보여서 조심해야해요!!',
+      img:'/images/나고야1.jpg',
+      filename:'입양신청서.docx',
+      filePath:'boardFiles/입양신청서.docx'
+    },
+    {no:2, title:'삼색', writer:'black', date:'2023-05-05',
+      contents:'밤에 보면 눈동자만 보여서 조심해야해요!!',
+      img:'/images/석촌호수1.jpg',
+      filename:'입양신청서.docx',
+      filePath:'boardFiles/입양신청서.docx'
+    },
+    {no:3, title:'턱시도', writer:'black', date:'2023-05-05',
+      contents:'밤에 보면 눈동자만 보여서 조심해야해요!!',
+      img:'/images/집근처.jpg',
+      filename:'입양신청서.docx',
+      filePath:'boardFiles/입양신청서.docx'
+    },
+    {no:4, title:'러시안블루', writer:'black', date:'2023-05-05',
+      contents:'밤에 보면 눈동자만 보여서 조심해야해요!!',
+      img:'/images/진주냥.jpg',
+      filename:'입양신청서.docx',
+      filePath:'boardFiles/입양신청서.docx'
+    },
+    {no:5, title:'치즈', writer:'cheezenya', date:'2023-01-01',
       contents:`한국에서는 오래전부터 노란색, 금색, 주황색 고양이들을 사랑스럽게 불러왔고, 
       요즘엔 주로 "치즈" 혹은 "치즈 태비"라고 부르고 있어요. 이름만 들어도 몽글몽글한 느낌이 들죠?
       이 치즈냥이들은 유전적으로 약 80% 정도가 수컷이에요. 그래서 그런지 겁이 없는 편이고, 사람들한테도
@@ -40,30 +64,24 @@ function App() {
       filename:'입양신청서.docx',
       filePath:'boardFiles/입양신청서.docx'
     },
-    {no:2, title:'삼색', writer:'threenya', date:'2023-03-03',
+    {no:6, title:'삼색', writer:'threenya', date:'2023-03-03',
       contents:'삼색이를 구조해서 임시보호중입니다!!',
       img:'/images/threecolorcat.jpg',
       filename:'입양신청서.docx',
       filePath:'boardFiles/입양신청서.docx'
     },
-    {no:3, title:'턱시도', writer:'tuxedodo', date:'2023-05-05',
+    {no:7, title:'턱시도', writer:'tuxedodo', date:'2023-05-05',
       contents:'예쁘지만 엉뚱한 매력이 있습니다',
       img:'/images/tuxedocat.jpg',
       filename:'입양신청서.docx',
       filePath:'boardFiles/입양신청서.docx'
     },
-    {no:4, title:'깜고', writer:'black', date:'2023-05-05',
+    {no:8, title:'깜고', writer:'black', date:'2023-05-05',
       contents:'밤에 보면 눈동자만 보여서 조심해야해요!!',
       img:'/images/blackcat.jpg',
       filename:'입양신청서.docx',
       filePath:'boardFiles/입양신청서.docx'
     },
-    {no:5, title:'깜고', writer:'black', date:'2023-05-05',
-      contents:'밤에 보면 눈동자만 보여서 조심해야해요!!',
-      img:'/images/blackcat.jpg',
-      filename:'입양신청서.docx',
-      filePath:'boardFiles/입양신청서.docx'
-    }
   ]);
 
   return (

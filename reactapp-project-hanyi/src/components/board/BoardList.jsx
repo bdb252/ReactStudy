@@ -39,7 +39,7 @@ function BoardList() {
 
   return (<>
     <div className="boardList">
-      <h2>자유게시판</h2>
+      <h2>자유게시판🐾</h2>
       <nav className="free-nav">
         <Link to='write'>글쓰기</Link>
       </nav>

@@ -32,12 +32,11 @@ function CatView(props) {
   }, [vi.filePath]);
 
   return (<>
-    <nav>
-      <Link to="/catprofile" className="catlink"
-        style={{ margin: "20px" }}>목록</Link>&nbsp;
-    </nav>
     <article>
-      <h2 style={{ margin: '40px' }}>게시판-읽기</h2>
+      <h2 className="catlist">게시판-읽기</h2>
+      <nav>
+        <Link to="/catprofile" className="catlink">목록</Link>&nbsp;
+      </nav>
       <table id="boardTable">
         <colgroup>
           <col width="30%" /><col width="*" />
@@ -56,7 +55,7 @@ function CatView(props) {
             <td>{vi.date}</td>
           </tr>
           <tr>
-            <td colSpan={2}><img src={vi.img} alt="cat" /></td>
+            <td colSpan={2} className="tableImg"><img src={vi.img} alt="cat" /></td>
           </tr>
           <tr>
             <td colSpan={2} className='cen'>{vi.contents}</td>

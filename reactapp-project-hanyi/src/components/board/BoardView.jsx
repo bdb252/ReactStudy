@@ -43,7 +43,7 @@ function BoardView() {
   return (<>
     {post && (
       <div className="boardView">
-        <h2>자유게시판</h2>
+        <h2>자유게시판🐾</h2>
         <nav className="free-nav">
           <Link to='/board'>목록</Link>&nbsp;&nbsp;
           <Link to={'/board/edit/' + id}>수정</Link>&nbsp;&nbsp;

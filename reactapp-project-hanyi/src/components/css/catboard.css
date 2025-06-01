@@ -9,12 +9,14 @@ article {
   font-family: 'Noto Sans KR', sans-serif;
 }
 
-h2 {
+/* h2 {
   text-align: center;
-  color: #ffcc00;
   margin-bottom: 30px;
+} */
+.catlist {
+  color: #ffcc00;
+  margin: 20px;
 }
-
 /* 테이블 스타일 */
 #boardTable {
   width: 100%;
@@ -96,61 +98,4 @@ h2 {
   text-align: center;
 }
 
-
-/* view용 테이블 스타일 */
-/* #boardTable {
-  width: 100%;
-  border-collapse: collapse;
-  table-layout: fixed; 
-}
-
-#boardTable th, #boardTable td {
-  border: 1px solid #ddd;
-  padding: 10px;
-  text-align: left;
-}
-
-#boardTable th {
-  background-color: #6a5acd;
-  color: white;
-  font-size: 14px;
-} */
-
-/* 각 th의 고정 너비 설정 */
-/* #boardTable th:nth-child(1) {
-  width: 80px;
-}
-#boardTable th:nth-child(2) {
-  width: 150px;
-}
-#boardTable th:nth-child(3) {
-  width: 100px;
-}
-#boardTable th:nth-child(4) {
-  width: auto;
-} */
-
-/* 페이징 */
-/* .paging {
-  margin-top: 20px;
-  text-align: center;
-}
-
-.paging button {
-  margin: 0 5px;
-  padding: 6px 10px;
-  border: 1px solid #ccc;
-  background: white;
-  cursor: pointer;
-  border-radius: 4px;
-}
-
-.paging button.active {
-  background-color: #333;
-  color: #fff;
-}
-
-.paging button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-} */
+.tableImg img{ max-width: 450px; }

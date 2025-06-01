@@ -51,7 +51,7 @@ function App() {
   
   return (<>
     <div className="boardView">
-      <h3>게시물 수정하기</h3>
+      <h3>게시물 수정하기🐾</h3>
       <nav>
         <Link to="/board">목록</Link>
       </nav>
