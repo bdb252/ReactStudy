@@ -110,7 +110,7 @@ function Regist(props) {
     // 유효성 검사 추가 가능 (이미 useEffect로 체크된 상태)
     localStorage.setItem('user', JSON.stringify(formData));
     alert('회원가입 완료!');
-    window.location.href = '/login';
+    window.location.href = '/';
   };
 
   // 아이디 중복확인
