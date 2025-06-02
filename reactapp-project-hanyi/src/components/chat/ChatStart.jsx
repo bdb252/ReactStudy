@@ -6,7 +6,7 @@ const ChatStart = () => {
   const refId = useRef();
 
   const openChatWin = () => {
-    window.open(`test2/chat/talk?roomId=${refRoom.current.value}&userId=${refId.current.value}`,
+    window.open(`#/chat/talk?roomId=${refRoom.current.value}&userId=${refId.current.value}`,
       '', 'width=500,height=700');
   }
 
