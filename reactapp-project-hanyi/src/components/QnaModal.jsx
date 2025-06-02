@@ -180,7 +180,7 @@ const QnaModal = () => {
   };
 
   return (<>
-    <div className="container mt-4" style={{backgroundColor:'black'}}>
+    <div className="container mt-4">
       <BoardView />
       <CommentBtn newOpenModal={newOpenModal} />
       <ModalWindow boardData={boardData} setBoardData={setBoardData}

@@ -48,7 +48,7 @@ const TopNavi = (props) => {
           <NavLink to='/'>Home</NavLink>&nbsp;&nbsp;
           {user ? (<>
             <NavLink to='/myinfoedit'>회원정보수정</NavLink>&nbsp;&nbsp;
-            <span onClick={logout_handler} style={{ cursor: 'pointer', color: 'blue' }}>로그아웃</span>&nbsp;&nbsp;
+            <span onClick={logout_handler} style={{ cursor: 'pointer' }}>로그아웃</span>&nbsp;&nbsp;
           </>) :
             (<>
               <NavLink to='/regist'>회원가입</NavLink> &nbsp;&nbsp;

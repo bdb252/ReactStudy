@@ -36,8 +36,8 @@ function CatList(props) {
 
   return (<>
     <article>
-    <h2 className="catlist">유기묘 이야기</h2>
-      <table id="boardTable">
+    <h2>유기묘 이야기</h2>
+      <table className="boardTable">
         <thead>
           <tr>
             <th>No</th>

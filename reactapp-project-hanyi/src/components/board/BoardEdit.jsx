@@ -2,7 +2,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from "react";
 import { firestore } from "../../firestoreConfig";
 import { doc, setDoc, getDoc, getDocs, collection } from "firebase/firestore";
-import '../css/blackcatView.css';
+import '../css/catboard.css';
 
 function App() {
   // 날짜 생성

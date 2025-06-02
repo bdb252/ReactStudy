@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { firestore } from "../../firestoreConfig";
 import { doc, setDoc, getDoc, deleteDoc, collection } from "firebase/firestore";
 import { Link, useParams, useNavigate } from "react-router-dom";
-import '../css/blackcatView.css';
+import '../css/catboard.css';
 
 function BoardView() {
   console.log('firestore', firestore);
@@ -49,7 +49,7 @@ function BoardView() {
           <Link to={'/board/edit/' + id}>수정</Link>&nbsp;&nbsp;
           <button onClick={delete_handler} className="delete-btn">삭제</button>
         </nav>
-        <table border='1' className="freeTable">
+        <table border='1' className="boardTable">
           <tbody>
             <tr>
               <td>작성자</td>
@@ -64,7 +64,7 @@ function BoardView() {
               <td>{post.regdate}</td>
             </tr>
             <tr>
-              <td colSpan={2}>{post.contents}</td>
+              <td colSpan={2} style={{textAlign:"center"}}>{post.contents}</td>
             </tr>
           </tbody>
         </table>

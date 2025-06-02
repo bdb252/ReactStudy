@@ -9,16 +9,14 @@ article {
   font-family: 'Noto Sans KR', sans-serif;
 }
 
-/* h2 {
-  text-align: center;
-  margin-bottom: 30px;
-} */
-.catlist {
+
+article h2 {
   color: #ffcc00;
   margin: 20px;
 }
+
 /* 테이블 스타일 */
-#boardTable {
+.boardTable {
   width: 100%;
   border-collapse: collapse;
   background-color: #fff;
@@ -29,31 +27,56 @@ article {
   margin-bottom: 30px;
 }
 
-#boardTable th,
-#boardTable td {
+.boardTable th,
+.boardTable td {
   padding: 14px;
   border: 1px solid #ccc;
   text-align: center;
 }
 
-#boardTable th {
+.boardTable th {
   background-color: #333;
   color: #ffcc00;
 }
 
-.catlink {
+/* .catlink {
   color: #ffcc00;
   font-weight: bold;
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
-.catlink:hover {
+.catlink a {
+  background-color: #ffcc00;
+  color: #1a1a1a;
+  padding: 8px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.catlink a:hover {
   color: #ffd633;
   text-shadow: 0 0 5px #ffcc00;
   text-decoration: underline;
+} */
+
+.catlink {
+  display: inline-block;
+  color: #111;
+  font-weight: bold;
+  padding: 8px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+.catlink:hover {
+  background-color: #ffcc00; /* 노란 배경 */
+  color: #1a1a1a; /* 검정 글자 */
+  text-shadow: 0 0 5px #ffcc00;
+}
 /* 페이징 영역 */
 .paging {
   text-align: center;
@@ -94,8 +117,165 @@ article {
   border-radius: 8px;
   box-shadow: 0 0 5px rgba(0,0,0,0.2);
 }
+
 .cen {
   text-align: center;
+  vertical-align: middle;
 }
 
 .tableImg img{ max-width: 450px; }
+
+/* 글쓰기 버튼 */
+.free-nav {
+  text-align: right;
+  margin-bottom: 15px;
+}
+
+/* 목록, 수정 */
+.free-nav a {
+  background-color: #ffcc00;
+  color: #1a1a1a;
+  padding: 8px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.free-nav a:hover {
+  background-color: #e6b800;
+}
+
+/* 글쓰기 테이블 */
+.freeTable {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  color: #111;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+
+.freeTable td {
+  padding: 14px;
+  border: 1px solid #ccc;
+  vertical-align: middle;
+}
+
+.freeTable tr td:first-child {
+  background-color: #f8f8f8;
+  font-weight: bold;
+  width: 20%;
+  color: #444;
+}
+
+/* input 필드 */
+.freeTable input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #aaa;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+/* 제목에 링크 스타일 지정 */
+.freeTable td a {
+  color: #ffcc00;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.2s ease;
+}
+
+.freeTable td a:hover {
+  color: #ffd633;
+  text-decoration: underline;
+}
+
+.freeTable td {
+  transition: none;
+}
+
+/* 행 간격 및 마우스 호버 효과 */
+.freeTable tr {
+  transition: background-color 0.2s ease;
+}
+
+.freeTable th {
+  background-color: #f0f0f0;
+  color: #ffcc00;
+  font-weight: bold;
+}
+
+.boardView {
+  max-width: 800px;
+  margin: 60px auto;
+  background-color: #2c2c2c;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.7);
+  color: #f2f2f2;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.boardView h2,
+.boardView h3 {
+  text-align: center;
+  color: #ffcc00;
+  margin-bottom: 20px;
+}
+
+/* 상단 목록 링크 */
+.boardView a {
+  display: inline-block;
+  margin-bottom: 20px;
+  background-color: #ffcc00;
+  color: #1a1a1a;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.boardView a:hover {
+  background-color: #e6b800;
+}
+
+/* 글쓰기 버튼 */
+.boardView button[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  background-color: #ffcc00;
+  color: #1a1a1a;
+  font-weight: bold;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.boardView button[type="submit"]:hover {
+  background-color: #e6b800;
+}
+
+/* 삭제버튼 */
+.delete-btn {
+  background-color: #ff4d4d;       /* 강한 빨간색 */
+  color: #fff;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.delete-btn:hover {
+  background-color: #cc0000;       /* 더 어두운 빨강 */
+}

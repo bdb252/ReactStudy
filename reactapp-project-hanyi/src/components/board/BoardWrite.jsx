@@ -2,8 +2,8 @@ import { useState } from "react";
 import { firestore } from "../../firestoreConfig";
 import { doc, setDoc, addDoc, collection } from "firebase/firestore";
 import { Link, useNavigate } from "react-router-dom";
-import '../css/freeboard.css';
-import '../css/blackcatView.css';
+import '../css/catboard.css';
+
 function BoardWrite() {
   console.log('firestore', firestore);
   const navigate = useNavigate();
@@ -35,10 +35,11 @@ function BoardWrite() {
   // 컬렉션명 수정을 위한 스테이트
   const [collName, setCollName] = useState('boardData');
   return (<>
-    <div className="boardView">
-      <h2>자유게시판🐾</h2>
-      <h3>글쓰기</h3>
-      <Link to='/board'>목록</Link>
+    <article>
+      <h2>자유게시판 - 글쓰기🐾</h2>
+      <nav className="free-nav">
+        <Link to='/board' className="">목록</Link>
+      </nav>
       <form onSubmit={(event) => {
         event.preventDefault();
 
@@ -90,7 +91,7 @@ function BoardWrite() {
         </table>
         <button type="submit">글쓰기</button>
       </form>
-    </div>
+    </article>
   </>)
 }
 

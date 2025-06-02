@@ -33,11 +33,11 @@ function CatView(props) {
 
   return (<>
     <article>
-      <h2 className="catlist">게시판-읽기</h2>
-      <nav>
-        <Link to="/catprofile" className="catlink">목록</Link>&nbsp;
+      <h2 >게시판-읽기</h2>
+      <nav className="free-nav">
+        <Link to="/catprofile">목록</Link>&nbsp;
       </nav>
-      <table id="boardTable">
+      <table className="boardTable">
         <colgroup>
           <col width="30%" /><col width="*" />
         </colgroup>

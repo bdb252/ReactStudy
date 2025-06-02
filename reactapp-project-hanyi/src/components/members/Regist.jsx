@@ -1,5 +1,16 @@
 import { useEffect, useState } from "react";
 
+function phonNumFocus(thisObj, numLength, nextObj) {
+  // 현재 입력중인 <input>의 DOM을 얻어온다.
+  var input = document.getElementById(thisObj);
+  // 입력된 글자수를 확인한다.
+  var strLen = input.value.length;
+  // 입력할 글자수와 일치하면 다음 <input>으로 포커스를 이동한다.
+  if (strLen == numLength) {
+    document.getElementById(nextObj).focus();
+  }
+}
+
 function Regist(props) {
   // 기본적인 회원가입 정보
   const [formData, setFormData] = useState({
@@ -8,6 +19,7 @@ function Regist(props) {
     phone1: '', phone2: '', phone3: '',
     zipcode: '', address: '', addressDetail: '',
   });
+  const [idChecked, setIdCheked] = useState(false);
 
   useEffect(() => {
     // 우편번호 주소 검색
@@ -106,6 +118,11 @@ function Regist(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    if(!idChecked){
+      alert('아이디 중복확인을 해주세요');
+      return;
+    }
+
     console.log('formdata:', formData);
     // 유효성 검사 추가 가능 (이미 useEffect로 체크된 상태)
     localStorage.setItem('user', JSON.stringify(formData));
@@ -118,8 +135,10 @@ function Regist(props) {
     const existingUser = JSON.parse(localStorage.getItem('user'));
     if (existingUser && existingUser.username === formData.username) {
       alert("이미 존재하는 아이디입니다.");
+      setIdCheked(false);
     } else {
       alert("사용 가능한 아이디입니다.");
+      setIdCheked(true);
     }
   }
 
@@ -131,10 +150,9 @@ function Regist(props) {
         <label for="username">아이디</label>
         <div class="flex-group">
           <input type="text" id="username" name="username" required
-            onChange={handleChange} value={formData.username} />
+            onChange={(e)=>{handleChange(e); setIdCheked(false);}} value={formData.username} />
           <button type="button" id="checkUsernameBtn" onClick={idCheck}>중복확인</button>
         </div>
-        {/* <small id="usernameStatus" class="status-msg"></small> */}
 
         <label for="password">비밀번호</label>
         <input type="password" id="password" name="password" required
@@ -155,7 +173,7 @@ function Regist(props) {
         <label>이메일</label>
         <div class="flex-group">
           <input type="text" id="emailId" placeholder="아이디" required
-            onChange={handleChange} value={formData.emailId} /> @
+            onChange={handleChange} value={formData.emailId} /> <span style={{color:'white'}}>@</span>
           <input type="text" id="emailDomain" placeholder="도메인" required
             onChange={handleChange} value={formData.emailDomain} />
           <select id="emailSelect" onChange={handleEmailSelectChange} value={formData.emailDomain}>
@@ -168,11 +186,15 @@ function Regist(props) {
 
         <label>휴대전화번호</label>
         <div class="flex-group">
-          <input type="text" id="phone1" maxlength="3" required
-            onChange={handleChange} value={formData.phone1} /> -
-          <input type="text" id="phone2" maxlength="4" required
-            onChange={handleChange} value={formData.phone2} /> -
-          <input type="text" id="phone3" maxlength="4" required
+          <input type="text" id="phone1" size="3" required
+            onChange={handleChange} value={formData.phone1} 
+            onKeyUp={() => phonNumFocus('phone1', 3, 'phone2')}
+            /> -
+          <input type="text" id="phone2" size="4" required
+            onChange={handleChange} value={formData.phone2} 
+            onKeyUp={() => phonNumFocus('phone2', 4, 'phone3')}
+            /> -
+          <input type="text" id="phone3" size="4" required
             onChange={handleChange} value={formData.phone3} />
         </div>
 

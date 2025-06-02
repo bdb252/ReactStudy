@@ -11,7 +11,7 @@ const ChatStart = () => {
   }
 
   return (<div className="chattingStart">
-    <h2>실시간 채팅</h2>
+    <h2>실시간 채팅🐾</h2>
 
     <div className="inputRow">
       <label>채팅방 :&nbsp;</label>
