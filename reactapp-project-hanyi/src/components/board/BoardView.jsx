@@ -165,17 +165,17 @@ function BoardView() {
       const commentRef = collection(firestore, "boardData", id, "comments");
       // 댓글을 파이어스토어에 저장
       const docRef = await addDoc(commentRef, {
-        writer:iWriter,
-        contents:iContents,
+        writer: iWriter,
+        contents: iContents,
         regdate: nowDate(),
         likes: 0
       });
-      
+
       const sysdate = new Date().toISOString().slice(0, 16).replace('T', ' ');
       const newData = {
         idx: docRef.id, writer: iWriter, postdate: sysdate, contents: iContents, likes: 0
       };
-      
+
       setCommentData([...commentData, newData]);
       setNextVal(nextVal + 1);
       // 파이어스토어에 댓글 저장
@@ -186,7 +186,9 @@ function BoardView() {
       const ref = doc(firestore, `boardData/${id}/comments`, editIdx.idx);
       await updateDoc(ref, {
         writer: iWriter,
-        contents: iContents
+        contents: iContents,
+        regdate: nowDate(),
+        likes: editIdx.likes
       });
       const editData = commentData.map(row => {
         return (row.idx === editIdx.idx) ? { ...row, writer: iWriter, contents: iContents } : row;
@@ -199,7 +201,18 @@ function BoardView() {
   }
 
   //좋아요
-  const likePlus = (idx) => {
+  const likePlus = async (idx) => {
+    console.log('id', idx);
+    // 해당하는 댓글 찾기
+    const targetComment = commentData.find(row => row.idx === idx);
+    if (!targetComment) {
+      console.error("댓글을 찾을 수 없습니다.");
+      return;
+    }
+    const ref = doc(firestore, `boardData/${id}/comments`, idx);
+    await updateDoc(ref, {
+      likes: targetComment.likes + 1
+    })
     const newData = commentData.map(row => {
       return (row.idx === idx) ? { ...row, likes: row.likes + 1 } : row;
     });
