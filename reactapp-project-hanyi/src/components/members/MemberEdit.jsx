@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { getCookie } from "./cookieUtils";
 
+// 회원정보수정창
 function MemberEdit(props) {
   const navigate = useNavigate();
   // 회원 정보 얻어올 state

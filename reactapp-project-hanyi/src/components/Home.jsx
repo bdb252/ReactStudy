@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (<>
+    {/* 배경사진 1 */}
     <div className='heroSection backImg'>
       <img src="/images/backgroundimg_tmp.jpg" alt="배너1" className='backImg fade-in-img' />
       <div className="textOverlay">
@@ -16,6 +17,7 @@ const Home = () => {
           진짜 행운을 만나보세요♥ </h2>
       </div>
     </div>
+
     <div className='backImg'>
       {/* 배경사진 2 */}
       <Link to='catprofile'>

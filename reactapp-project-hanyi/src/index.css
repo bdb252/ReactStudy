@@ -1,7 +1,16 @@
 /* 기본 배경과 텍스트 */
+@font-face {
+    font-family: 'Ownglyph_ParkDaHyun';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2411-3@1.0/Ownglyph_ParkDaHyun.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
   background-color: #1a1a1a;
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: 'Ownglyph_ParkDaHyun', sans-serif !important;
+  /* 기본 폰트 20설정 */
+  font-size: 20px;
 }
 
 html {
@@ -52,7 +61,7 @@ h2 {
 }
 
 .textOverlay h2 {
-  font-family: 'Cafe24Ssurroundair', sans-serif;
+  /* font-family: 'Cafe24Ssurroundair', sans-serif; */
   font-size: 22px;
   line-height: 1.6;
   word-break: keep-all;
@@ -93,9 +102,11 @@ h2 {
   }
 }
 
+/* topnav 폰트크기 */
 .nav-link {
   text-decoration: none;
   padding: 12px 20px 12px 15px;
+  font-size: 18px;
 }
 
 /* header 스타일 */
@@ -118,7 +129,6 @@ header {
 @media (max-width: 700px) {
   header {
     padding: 12px var(--side-padding-s) 12px 15px;
-    /* font-size: 14px; */
     overflow: hidden;
   }
 }
@@ -457,7 +467,7 @@ footer .copyright {
   padding: 30px;
   border-radius: 16px;
   box-shadow: 0 0 20px rgba(0,0,0,0.8);
-  font-family: 'Noto Sans KR', sans-serif;
+  /* font-family: 'Noto Sans KR', sans-serif; */
 }
 
 .login-container h2 {

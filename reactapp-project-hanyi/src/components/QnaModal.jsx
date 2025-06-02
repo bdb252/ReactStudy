@@ -94,6 +94,7 @@ function CommentList(props) {
   }</>);
 }
 
+// qna화면은 모달로만 구성
 const QnaModal = () => {
   const [boardData, setBoardData] = useState([
     {
@@ -113,6 +114,7 @@ const QnaModal = () => {
       likes: 0
     },
   ]);
+  
   //입력상자
   const [iWriter, setIWriter] = useState('');
   const [iContents, setIContents] = useState('');

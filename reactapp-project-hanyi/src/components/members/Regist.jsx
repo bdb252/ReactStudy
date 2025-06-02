@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+// 회원가입창
 function phonNumFocus(thisObj, numLength, nextObj) {
   // 현재 입력중인 <input>의 DOM을 얻어온다.
   var input = document.getElementById(thisObj);
@@ -19,6 +20,7 @@ function Regist(props) {
     phone1: '', phone2: '', phone3: '',
     zipcode: '', address: '', addressDetail: '',
   });
+  // 아이디 중복확인
   const [idChecked, setIdCheked] = useState(false);
 
   useEffect(() => {
@@ -32,6 +34,7 @@ function Regist(props) {
     const emailSelect = document.getElementById("emailSelect");
     const emailDomain = document.getElementById("emailDomain");
 
+    // 
     const handleEmailChange = () => {
       const selected = emailSelect.value;
       if (selected === "") {
@@ -126,6 +129,7 @@ function Regist(props) {
     console.log('formdata:', formData);
     // 유효성 검사 추가 가능 (이미 useEffect로 체크된 상태)
     localStorage.setItem('user', JSON.stringify(formData));
+    // 회원가입이 완료되면 안내창과 홈화면으로 이동
     alert('회원가입 완료!');
     window.location.href = '/';
   };
