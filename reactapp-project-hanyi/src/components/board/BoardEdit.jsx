@@ -1,7 +1,7 @@
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from "react";
 import { firestore } from "../../firestoreConfig";
-import { doc, setDoc, getDoc, getDocs, collection } from "firebase/firestore";
+import { doc, setDoc, getDoc, updateDoc, collection } from "firebase/firestore";
 import '../css/catboard.css';
 
 function App() {
@@ -11,10 +11,14 @@ function App() {
     var year = dateObj.getFullYear();
     var month = ("0" + (1 + dateObj.getMonth())).slice(-2);
     var day = ("0" + dateObj.getDate()).slice(-2);
-    return year + '-' + month + '-' + day;
+    var hour = ("0" + dateObj.getHours()).slice(-2);
+    var min = ("0" + dateObj.getMinutes()).slice(-2);
+    var sec = ("0" + dateObj.getSeconds()).slice(-2);
+    return year + "-" + month + "-" + day + " " + hour + ":" + min + ":" + sec;
   }
 
   const { id } = useParams();
+  // 게시물의 제목, 내용, 작성자를 얻기 위해해
   const [title, setTitle] = useState('');
   const [contents, setContents] = useState('');
   const [writer, setWriter] = useState('');
@@ -39,11 +43,10 @@ function App() {
   // 수정 함수
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await setDoc(doc(firestore, "boardData", id), {
+    await updateDoc(doc(firestore, "boardData", id), {
       title,
       contents,
       writer,
-      regdate: nowDate(),
     });
     alert("수정되었습니다.");
     navigate('/board');

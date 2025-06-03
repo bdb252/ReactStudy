@@ -34,21 +34,6 @@ function Regist(props) {
     const emailSelect = document.getElementById("emailSelect");
     const emailDomain = document.getElementById("emailDomain");
 
-    // 
-    const handleEmailChange = () => {
-      const selected = emailSelect.value;
-      if (selected === "") {
-        emailDomain.value = "";
-        emailDomain.readOnly = false;
-      } else {
-        emailDomain.value = selected;
-        emailDomain.readOnly = true;
-      }
-    };
-    emailSelect.addEventListener("change", handleEmailChange);
-    return () => {
-      emailSelect.removeEventListener("change", handleEmailChange);
-    };
   }, []);
 
   const handleChange = (e) => {
@@ -103,14 +88,18 @@ function Regist(props) {
 
   // 이메일 도메인 자동 작성
   const handleEmailSelectChange = (e) => {
+    // select태그에서 선택한 것
     const selected = e.target.value;
     const emailDomainInput = document.getElementById("emailDomain");
 
     if (selected === "") {
+      // 직접입력
       emailDomainInput.value = '';
       emailDomainInput.readOnly = false;
       setFormData(prev => ({ ...prev, emailDomain: '' }));
-    } else {
+    } 
+    else {
+      // 선택한 입력인 경우 input을 select 태그로 선택한 값으로 설정
       emailDomainInput.value = selected;
       emailDomainInput.readOnly = true;
       setFormData(prev => ({ ...prev, emailDomain: selected }));

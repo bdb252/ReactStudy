@@ -9,11 +9,11 @@ const Home = () => {
       <div className="textOverlay">
         <h2 className='fade-in'>The cat's out of the bag<br />
           Black cats are not bad luck <br /><br /></h2>
-        <h2 className='fade-in sec'>
+        <h2 className='fade-in sec' style={{fontFamily:'PyeongChangPeace-Bold'}}>
           <br />비밀이 드디어 밝혀졌어요. <br />
-          검은 고양이는 불행이 아닌, 가장 조용한 행운이었단 걸요. <br /></h2>
-        <h2 className='fade-in third'>
-          <br />편견 속에 숨어 있던 생명들,<br /> 이제 당신의 사랑을 기다립니다.<br />
+          검은 고양이는 불행이 아닌, <br />가장 조용한 행운이었단 걸요. <br /></h2>
+        <h2 className='fade-in third' style={{fontFamily:'PyeongChangPeace-Bold'}}>
+          <br />편견 속에 숨어 있던 생명들,<br /> 당신의 사랑을 기다립니다.<br />
           진짜 행운을 만나보세요♥ </h2>
       </div>
     </div>
@@ -57,7 +57,7 @@ const Home = () => {
 
           <details>
             <summary>Q5. 회원정보 수정 방법?</summary>
-            <p>???.</p>
+            <p>로그인을 먼저 진행한 후 회원정보를 수정해주세요. <br /> 아이디는 변경할 수 없습니다. </p>
           </details>
         </div>
       </Element>

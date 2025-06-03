@@ -37,8 +37,6 @@ function MemberEdit(props) {
     }).open();
   };
 
-  const [passwordMatch, setPasswordMatch] = useState(true);
-
   useEffect(() => {
     const storedData = JSON.parse(localStorage.getItem('user'));
     if (storedData) {

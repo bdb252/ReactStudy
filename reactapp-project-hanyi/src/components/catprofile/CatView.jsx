@@ -16,13 +16,16 @@ function CatView(props) {
     return prev;
   }, {});
 
+  // 첨부파일
   const [fileURL, setFileURL] = useState(null);
 
   useEffect(() => {
     if (vi.filePath) {
+      // 파일 경로가 있다면
       const fileRef = ref(storage, vi.filePath);
       getDownloadURL(fileRef)
         .then((url) => {
+          // 파일 URL 설정
           setFileURL(url);
         })
         .catch((err) => {

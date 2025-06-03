@@ -105,7 +105,7 @@ function ChatMessage() {
             else {
               img.onload = () => {
                 loadedCnt++;
-                // 로딩 완료된 이미지수 = 이미지 개수수
+                // 로딩 완료된 이미지수 = 이미지 개수
                 if (loadedCnt === images.length) {
                   scrollTop(chatWindow.current);
                 }
@@ -144,9 +144,6 @@ function ChatMessage() {
         }
         else {
           // 상대방이 보낸 메시지는 좌측으로 정렬한다. 
-          // showDiv.push(<div className='names'>{childData.id} <br />
-          //   <div className='msgs'>{childData.message}&nbsp;</div>
-          // </div>);
           showDiv.push(
             <div className='names'>
               {childData.id} <br />
@@ -161,8 +158,6 @@ function ChatMessage() {
             </div>
           );
         }
-        // 스크롤바를 최하단으로 내려준다. 근데 한칸씩 밀림
-        // scrollTop(chatWindow.current);
       });
       // 스테이트를 변경해서 대화내역을 새롭게 렌더링한다. 
       setChatData(showDiv);

@@ -24,15 +24,15 @@ function App() {
   const hideNavi = talkPath.includes(location.pathname);
 
   const [boardData, setBoardData] = useState([
-    {no:1, title:'깜고', writer:'black', date:'2024-08-27',
-      contents:'밤에 보면 눈동자만 보여서 조심해야해요!!',
-      img:'/images/나고야1.jpg',
+    {no:1, title:'러시안블루', writer:'black', date:'2025-05-05',
+      contents:'사람을 너무너무 좋아해서 먼저 다가오고 애교를 많이 부려요!!',
+      img:'/images/진주냥.jpg',
       filename:'입양신청서.docx',
       filePath:'boardFiles/입양신청서.docx'
     },
-    {no:2, title:'삼색', writer:'black', date:'2023-03-05',
-      contents:'태어난지 얼마 안된 새끼 삼색이에요!!',
-      img:'/images/석촌호수1.jpg',
+    {no:2, title:'깜고', writer:'black', date:'2024-08-27',
+      contents:'밤에 보면 눈동자만 보여서 조심해야해요!!',
+      img:'/images/나고야1.jpg',
       filename:'입양신청서.docx',
       filePath:'boardFiles/입양신청서.docx'
     },
@@ -42,9 +42,9 @@ function App() {
       filename:'입양신청서.docx',
       filePath:'boardFiles/입양신청서.docx'
     },
-    {no:4, title:'러시안블루', writer:'black', date:'2025-05-05',
-      contents:'사람을 너무너무 좋아해서 먼저 다가오고 애교를 많이 부려요!!',
-      img:'/images/진주냥.jpg',
+    {no:4, title:'삼색', writer:'black', date:'2023-03-05',
+      contents:'태어난지 얼마 안된 새끼 삼색이에요!!',
+      img:'/images/석촌호수1.jpg',
       filename:'입양신청서.docx',
       filePath:'boardFiles/입양신청서.docx'
     },

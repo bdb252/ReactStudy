@@ -4,17 +4,21 @@ import { Link } from 'react-router-dom';
 
 // top 버튼 구현
 function ScrollTop() {
+  // Top버튼 설정. 처음에는 false로 안보이게 
   const [isVisible, setIsVisible] = useState(false);
 
+  // 스크롤 이벤트가 발생하면 호출
   const handleScroll = () => {
     setIsVisible(window.pageYOffset > 300);
   };
 
+  // top 버튼 누르면 top으로 스무스하게 가도록
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   useEffect(() => {
+    // 스크롤할 때마다 handleScroll 함수를 실행
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);

@@ -279,7 +279,7 @@ function BoardView() {
               <td>{post.regdate}</td>
             </tr>
             <tr>
-              <td colSpan={2} style={{ textAlign: "center" }}>{post.contents}</td>
+              <td colSpan={2} style={{ textAlign: "center", whiteSpace:"pre-wrap" }}>{post.contents}</td>
             </tr>
           </tbody>
         </table>
