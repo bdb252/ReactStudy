@@ -5,7 +5,7 @@ const Home = () => {
   return (<>
     {/* 배경사진 1 */}
     <div className='heroSection backImg'>
-      <img src="/images/backgroundimg_tmp.jpg" alt="배너1" className='backImg fade-in-img' />
+      <img src="/images/backgroundImgdarkani.png" alt="배너1" className='backImg fade-in-img' />
       <div className="textOverlay">
         <h2 className='fade-in'>The cat's out of the bag<br />
           Black cats are not bad luck <br /><br /></h2>
