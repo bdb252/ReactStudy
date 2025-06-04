@@ -77,6 +77,7 @@ function App() {
 
   return (
     <>
+    {/* 채팅방에 들어오면 topNav안뜨게 */}
       {!hideNavi && <TopNavi />}
       <Routes>
         <Route path="/" element={<Home />} />

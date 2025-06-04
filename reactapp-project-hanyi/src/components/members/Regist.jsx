@@ -34,6 +34,21 @@ function Regist(props) {
     const emailSelect = document.getElementById("emailSelect");
     const emailDomain = document.getElementById("emailDomain");
 
+    // 
+    const handleEmailChange = () => {
+      const selected = emailSelect.value;
+      if (selected === "") {
+        emailDomain.value = "";
+        emailDomain.readOnly = false;
+      } else {
+        emailDomain.value = selected;
+        emailDomain.readOnly = true;
+      }
+    };
+    emailSelect.addEventListener("change", handleEmailChange);
+    return () => {
+      emailSelect.removeEventListener("change", handleEmailChange);
+    };
   }, []);
 
   const handleChange = (e) => {
@@ -88,18 +103,14 @@ function Regist(props) {
 
   // 이메일 도메인 자동 작성
   const handleEmailSelectChange = (e) => {
-    // select태그에서 선택한 것
     const selected = e.target.value;
     const emailDomainInput = document.getElementById("emailDomain");
 
     if (selected === "") {
-      // 직접입력
       emailDomainInput.value = '';
       emailDomainInput.readOnly = false;
       setFormData(prev => ({ ...prev, emailDomain: '' }));
-    } 
-    else {
-      // 선택한 입력인 경우 input을 select 태그로 선택한 값으로 설정
+    } else {
       emailDomainInput.value = selected;
       emailDomainInput.readOnly = true;
       setFormData(prev => ({ ...prev, emailDomain: selected }));
@@ -143,33 +154,33 @@ function Regist(props) {
         <label for="username">아이디</label>
         <div class="flex-group">
           <input type="text" id="username" name="username" required
-            onChange={(e)=>{handleChange(e); setIdCheked(false);}} value={formData.username} />
+            onChange={(e)=>{handleChange(e); setIdCheked(false);}}  />
           <button type="button" id="checkUsernameBtn" onClick={idCheck}>중복확인</button>
         </div>
 
         <label for="password">비밀번호</label>
         <input type="password" id="password" name="password" required
-          onChange={handleChange} value={formData.password} />
+          onChange={handleChange}  />
 
         <label for="confirmPassword">비밀번호 확인</label>
         <input type="password" id="confirmPassword" name="confirmPassword"
           required
-          onChange={handleChange} value={formData.confirmPassword} />
+          onChange={handleChange}  />
         {!passwordMatch && (
           <small style={{ color: 'red' }}>비밀번호가 일치하지 않습니다. </small>
         )}
 
         <label for="name">이름</label>
         <input type="text" id="name" name="name" required
-          onChange={handleChange} value={formData.name} />
+          onChange={handleChange} />
 
         <label>이메일</label>
         <div class="flex-group">
           <input type="text" id="emailId" placeholder="아이디" required
-            onChange={handleChange} value={formData.emailId} /> <span style={{color:'white'}}>@</span>
+            onChange={handleChange}  /> <span style={{color:'white'}}>@</span>
           <input type="text" id="emailDomain" placeholder="도메인" required
-            onChange={handleChange} value={formData.emailDomain} />
-          <select id="emailSelect" onChange={handleEmailSelectChange} value={formData.emailDomain}>
+            onChange={handleChange}  />
+          <select id="emailSelect" onChange={handleEmailSelectChange} >
             <option value="">직접입력</option>
             <option value="gmail.com">gmail.com</option>
             <option value="naver.com">naver.com</option>
@@ -180,15 +191,15 @@ function Regist(props) {
         <label>휴대전화번호</label>
         <div class="flex-group">
           <input type="text" id="phone1" size="3" required
-            onChange={handleChange} value={formData.phone1} 
+            onChange={handleChange}  
             onKeyUp={() => phonNumFocus('phone1', 3, 'phone2')}
             /> -
           <input type="text" id="phone2" size="4" required
-            onChange={handleChange} value={formData.phone2} 
+            onChange={handleChange}  
             onKeyUp={() => phonNumFocus('phone2', 4, 'phone3')}
             /> -
           <input type="text" id="phone3" size="4" required
-            onChange={handleChange} value={formData.phone3} />
+            onChange={handleChange}  />
         </div>
 
         <label htmlFor="zipcode">우편번호</label>

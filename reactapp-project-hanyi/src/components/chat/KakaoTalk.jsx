@@ -217,7 +217,7 @@ function ChatMessage() {
               return getDownloadURL(snapshot.ref);
             }).then((url) => {
               console.log('다운로드 URL', url);
-
+              // getDownloadURL로 얻어온 url 사용해서 메시지 입력
               messageWrite(roomId, userId, url);
             })
           }} />
