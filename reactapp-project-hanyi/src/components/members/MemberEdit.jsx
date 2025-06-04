@@ -59,6 +59,22 @@ function MemberEdit(props) {
     navigate('/');
   };
 
+  // 이메일 도메인 자동 작성
+  const handleEmailSelectChange = (e) => {
+    const selected = e.target.value;
+    const emailDomainInput = document.getElementById("emailDomain");
+
+    if (selected === "") {
+      emailDomainInput.value = '';
+      emailDomainInput.readOnly = false;
+      setFormData(prev => ({ ...prev, emailDomain: '' }));
+    } else {
+      emailDomainInput.value = selected;
+      emailDomainInput.readOnly = true;
+      setFormData(prev => ({ ...prev, emailDomain: selected }));
+    }
+  };
+
   return (<>
     <div class="container">
       <h2>회원정보수정</h2>
@@ -85,10 +101,10 @@ function MemberEdit(props) {
         <label>이메일</label>
         <div className="flex-group">
           <input type="text" id="emailId" placeholder="아이디" required
-            onChange={handleChange} value={formData.emailId} /> <span style={{color:'white'}}>@</span>
+            onChange={handleChange} value={formData.emailId} /> <span style={{ color: 'white' }}>@</span>
           <input type="text" id="emailDomain" placeholder="도메인" required
             onChange={handleChange} value={formData.emailDomain} />
-          <select id="emailSelect" >
+          <select id="emailSelect" onChange={handleEmailSelectChange} >
             <option value="">직접입력</option>
             <option value="gmail.com">gmail.com</option>
             <option value="naver.com">naver.com</option>
