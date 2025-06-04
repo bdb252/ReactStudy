@@ -31,7 +31,7 @@ const Login = () => {
       </label>
       <br />
       <label htmlFor="userpass">Password
-        <input type="text" name="pass" id="userpass" />
+        <input type="password" name="pass" id="userpass" />
       </label>
       <br />
       <button type="submit">로그인</button>
