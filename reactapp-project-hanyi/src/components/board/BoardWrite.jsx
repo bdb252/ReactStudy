@@ -1,12 +1,27 @@
-import { useState } from "react";
-import { firestore } from "../../firestoreConfig";
+import { useEffect, useState } from "react";
+import { firestore, storage } from "../../firestoreConfig";
 import { doc, setDoc, addDoc, collection } from "firebase/firestore";
+import { ref, uploadBytes } from 'firebase/storage';
 import { Link, useNavigate } from "react-router-dom";
+import { getCookie } from "../members/cookieUtils";
 import '../css/catboard.css';
+
+function isImage(message) {
+  return typeof message === 'string' && message.startsWith('https://') && (
+    message.endsWith('.jpg') ||
+    message.endsWith('.jpeg') ||
+    message.endsWith('.png') ||
+    message.endsWith('.gif') ||
+    message.includes('firebasestorage.googleapis.com')
+  );
+}
 
 function BoardWrite() {
   console.log('firestore', firestore);
   const navigate = useNavigate();
+
+  const storageRef = ref(storage);
+  const fileRef1 = ref(storage, 'file1');
 
   // 오늘의 날짜를 만들기 위한 함수
   const nowDate = () => {
@@ -34,6 +49,18 @@ function BoardWrite() {
 
   // 컬렉션명 수정을 위한 스테이트
   const [collName, setCollName] = useState('boardData');
+
+  // 로그인 되어있으면 작성자가 자동으로
+  const [idData, setIdData] = useState('');
+  useEffect(() => {
+    const storedData = JSON.parse(localStorage.getItem('user'));
+    if (storedData) {
+      console.log('아이디', storedData.username);
+      setIdData(storedData.username);
+    }
+  }, []);
+  const user = getCookie('user');
+
   return (<>
     <article>
       <h2>자유게시판 - 글쓰기🐾</h2>
@@ -85,7 +112,25 @@ function BoardWrite() {
             </tr>
             <tr>
               <td>작성자</td>
-              <td><input type="text" name="writer" /></td>
+              <td>
+                {user ?
+                  <input type="text" name="writer" value={idData} readOnly />
+                  :
+                  <input type="text" name="writer"/>
+                }
+              </td>
+            </tr>
+            <tr>
+              <td>첨부파일</td>
+              <td>
+                <input type="file" name="myfile" onChange={(e) => {
+                  console.log('files 프로퍼티', e.target.files);
+                  const imageRef = ref(fileRef1, e.target.files[0].name);
+                  uploadBytes(imageRef, e.target.files[0]).then((snapshot) => {
+                    console.log('업로드 성공', snapshot);
+                  });
+                }} />
+              </td>
             </tr>
           </tbody>
         </table>

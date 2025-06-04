@@ -281,6 +281,13 @@ function BoardView() {
             <tr>
               <td colSpan={2} style={{ textAlign: "center", whiteSpace:"pre-wrap" }}>{post.contents}</td>
             </tr>
+            <tr>
+              <td>첨부파일</td>
+              {/* {isImage(childData.message)
+                ? <img src={childData.message} alt="uploaded" style={{ maxWidth: '200px' }} />
+                : <div className="bubble">{childData.message}</div>}
+              <div className="chat-time right">{childData.date}</div> */}
+            </tr>
           </tbody>
         </table>
       </div>

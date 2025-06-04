@@ -31,7 +31,7 @@ const CommentBtn = (props) => {
   <div style={{textAlign:'center'}}>
     {/* 댓글 작성 버튼 */}
     <button className="btn btn-yellow" data-bs-toggle="modal" data-bs-target="#commentModal" onClick={() => props.newOpenModal()}>
-      댓글 작성
+      질문 작성
     </button>
   </div>);
 }
@@ -43,7 +43,7 @@ function ModalWindow(props) {
       <div className="modal-dialog">
         <div className="modal-content">
           <div className="modal-header">
-            <h5 className="modal-title" id="commentModalLabel">댓글 작성</h5>
+            <h5 className="modal-title" id="commentModalLabel">질문 작성</h5>
             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div className="modal-body">
