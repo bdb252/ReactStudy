@@ -190,15 +190,15 @@ function Regist(props) {
 
         <label>휴대전화번호</label>
         <div class="flex-group">
-          <input type="text" id="phone1" size="3" required
+          <input type="text" id="phone1" maxLength="3" required
             onChange={handleChange}  
             onKeyUp={() => phonNumFocus('phone1', 3, 'phone2')}
             /> -
-          <input type="text" id="phone2" size="4" required
+          <input type="text" id="phone2" maxLength="4" required
             onChange={handleChange}  
             onKeyUp={() => phonNumFocus('phone2', 4, 'phone3')}
             /> -
-          <input type="text" id="phone3" size="4" required
+          <input type="text" id="phone3" maxLength="4" required
             onChange={handleChange}  />
         </div>
 

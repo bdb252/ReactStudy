@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { getCookie } from "./members/cookieUtils";
 
 const nowDate = () => {
   let dateObj = new Date();
@@ -17,7 +18,7 @@ function BoardView() {
     <div className="card mb-4">
       <div className="card-body">
         <h2>집사 질문함</h2>
-        <p className="card-text" style={{textAlign:'center'}}>
+        <p className="card-text" style={{ textAlign: 'center' }}>
           자유롭게 댓글로 소통할 수 있는 공간입니다! <br />
           사담은 자제해주세요:)
         </p>
@@ -28,16 +29,27 @@ function BoardView() {
 
 const CommentBtn = (props) => {
   return (
-  <div style={{textAlign:'center'}}>
-    {/* 댓글 작성 버튼 */}
-    <button className="btn btn-yellow" data-bs-toggle="modal" data-bs-target="#commentModal" onClick={() => props.newOpenModal()}>
-      질문 작성
-    </button>
-  </div>);
+    <div style={{ textAlign: 'center' }}>
+      {/* 댓글 작성 버튼 */}
+      <button className="btn btn-yellow" data-bs-toggle="modal" data-bs-target="#commentModal" onClick={() => props.newOpenModal()}>
+        질문 작성
+      </button>
+    </div>);
 }
 
 
+
 function ModalWindow(props) {
+  // 로그인 되어있으면 작성자가 자동으로
+  const [idData, setIdData] = useState('');
+  useEffect(() => {
+    const storedData = JSON.parse(localStorage.getItem('user'));
+    if (storedData) {
+      console.log('아이디', storedData.username);
+      setIdData(storedData.username);
+    }
+  }, []);
+  const user = getCookie('user');
   return (<>
     {/* 댓글 작성 Modal */}
     <div className="modal fade" id="commentModal" tabIndex="-1" aria-labelledby="commentModalLabel" aria-hidden="true">
@@ -51,8 +63,13 @@ function ModalWindow(props) {
             {/* 작성자명 입력 상자 추가 */}
             <div className="mb-3">
               <label htmlFor="commentAuthor" className="form-label">작성자명</label>
-              <input type="text" className="form-control" id="commentAuthor" placeholder="이름을 입력하세요"
-                value={props.iWriter} onChange={(e) => props.setIWriter(e.target.value)} />
+                {user ?
+                  <input type="text" className="form-control" value={idData} readOnly />
+                  :
+                  <input type="text" className="form-control" id="commentAuthor" placeholder="이름을 입력하세요"
+                    value={props.iWriter} onChange={(e) => props.setIWriter(e.target.value)} />
+                  // <input type="text" name="writer"/>
+                }
             </div>
             {/* 댓글 입력 상자*/}
             <label htmlFor="commentContent" className="form-label">댓글 내용</label>
@@ -115,7 +132,7 @@ const QnaModal = () => {
       likes: 0
     },
   ]);
-  
+
   //입력상자
   const [iWriter, setIWriter] = useState('');
   const [iContents, setIContents] = useState('');
