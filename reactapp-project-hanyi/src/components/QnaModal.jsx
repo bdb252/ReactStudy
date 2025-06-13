@@ -116,19 +116,19 @@ function CommentList(props) {
 const QnaModal = () => {
   const [boardData, setBoardData] = useState([
     {
-      idx: 1, writer: '자바', postdate: nowDate(), contents: '강남 고양이 병원 추천해주세요!!',
+      idx: 1, writer: '자바', postdate: '2025-05-05', contents: '강남 고양이 병원 추천해주세요!!',
       likes: 0
     },
     {
-      idx: 2, writer: '돼지', postdate: nowDate(), contents: '다이어트 사료 뭐가 좋을까요?',
+      idx: 2, writer: '돼지', postdate: '2025-05-06', contents: '다이어트 사료 뭐가 좋을까요?',
       likes: 0
     },
     {
-      idx: 3, writer: '바보', postdate: nowDate(), contents: '고양이가 자꾸 제 손을 물어요',
+      idx: 3, writer: '바보', postdate: '2025-05-16', contents: '고양이가 자꾸 제 손을 물어요',
       likes: 0
     },
     {
-      idx: 4, writer: '파파고', postdate: nowDate(), contents: '고양이가 하는말을 못알아듣겠어요',
+      idx: 4, writer: '파파고', postdate: '2025-05-26', contents: '고양이가 하는말을 못알아듣겠어요',
       likes: 0
     },
   ]);
