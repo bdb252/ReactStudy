@@ -120,7 +120,7 @@ function BoardWrite() {
                 }
               </td>
             </tr>
-            <tr>
+            {/* <tr>
               <td>첨부파일</td>
               <td>
                 <input type="file" name="myfile" onChange={(e) => {
@@ -131,7 +131,7 @@ function BoardWrite() {
                   });
                 }} />
               </td>
-            </tr>
+            </tr> */}
           </tbody>
         </table>
         <button type="submit">글쓰기</button>
