@@ -2,7 +2,18 @@ import { useEffect, useState } from "react";
 import { firestore } from "../../firestoreConfig";
 import { doc, updateDoc, addDoc, getDoc, getDocs, deleteDoc, collection } from "firebase/firestore";
 import { Link, useParams, useNavigate } from "react-router-dom";
+import { getCookie } from "../members/cookieUtils";
 import '../css/catboard.css';
+
+function isImage(message) {
+  return typeof message === 'string' && message.startsWith('https://') && (
+    message.endsWith('.jpg') ||
+    message.endsWith('.jpeg') ||
+    message.endsWith('.png') ||
+    message.endsWith('.gif') ||
+    message.includes('firebasestorage.googleapis.com')
+  );
+}
 
 const nowDate = () => {
   let dateObj = new Date();
@@ -16,16 +27,33 @@ const nowDate = () => {
 }
 
 const CommentBtn = (props) => {
+  const openModal = () => {
+    const stored = JSON.parse(localStorage.getItem('user'));
+    if (stored?.username) {
+      props.setIWriter(stored.username);
+    }
+  };
   return (
     <div style={{ textAlign: 'center' }}>
       {/* 댓글 작성 버튼 */}
-      <button className="btn btn-yellow" data-bs-toggle="modal" data-bs-target="#commentModal" onClick={() => props.newOpenModal()}>
+      <button className="btn btn-yellow" data-bs-toggle="modal" data-bs-target="#commentModal" onClick={() => openModal()}>
         댓글 작성
       </button>
     </div>);
 }
 
 function ModalWindow(props) {
+  // 로그인 되어있으면 작성자가 자동으로
+  const [idData, setIdData] = useState('');
+  useEffect(() => {
+    const storedData = JSON.parse(localStorage.getItem('user'));
+    if (storedData) {
+      console.log('아이디', storedData.username);
+      setIdData(storedData.username);
+    }
+  }, []);
+  const user = getCookie('user');
+
   return (<>
     {/* 댓글 작성 Modal */}
     <div className="modal fade" id="commentModal" tabIndex="-1" aria-labelledby="commentModalLabel" aria-hidden="true">
@@ -39,8 +67,13 @@ function ModalWindow(props) {
             {/* 작성자명 입력 상자 추가 */}
             <div className="mb-3">
               <label htmlFor="commentAuthor" className="form-label">작성자명</label>
-              <input type="text" className="form-control" id="commentAuthor" placeholder="이름을 입력하세요"
-                value={props.iWriter} onChange={(e) => props.setIWriter(e.target.value)} />
+                {user ?
+                  <input type="text" className="form-control" value={idData} readOnly />
+                  :
+                  <input type="text" className="form-control" id="commentAuthor" placeholder="이름을 입력하세요"
+                    value={props.iWriter} onChange={(e) => props.setIWriter(e.target.value)} />
+                  // <input type="text" name="writer"/>
+                }
             </div>
             {/* 댓글 입력 상자*/}
             <label htmlFor="commentContent" className="form-label">댓글 내용</label>
@@ -83,20 +116,8 @@ function CommentList(props) {
   }</>);
 }
 
-// 댓글 입력
-// const commentsWrite = async (boardId, writer, contents) => {
-//   const commentRef = collection(firestore, "boardData", boardId, "comments");
-//   // 댓글 저장
-//   await addDoc(commentRef, {
-//     writer,
-//     contents,
-//     regdate: nowDate(),
-//     likes: 0
-//   });
-// }
-
 function BoardView() {
-  console.log('firestore', firestore);
+  // console.log('firestore', firestore);
   const [showData, setShowData] = useState([]);
 
   const { id } = useParams();
@@ -171,9 +192,8 @@ function BoardView() {
         likes: 0
       });
 
-      const sysdate = new Date().toISOString().slice(0, 16).replace('T', ' ');
       const newData = {
-        idx: docRef.id, writer: iWriter, postdate: sysdate, contents: iContents, likes: 0
+        idx: docRef.id, writer: iWriter, postdate: nowDate(), contents: iContents, likes: 0
       };
 
       setCommentData([...commentData, newData]);
@@ -283,10 +303,9 @@ function BoardView() {
             </tr>
             <tr>
               <td>첨부파일</td>
-              {/* {isImage(childData.message)
-                ? <img src={childData.message} alt="uploaded" style={{ maxWidth: '200px' }} />
-                : <div className="bubble">{childData.message}</div>}
-              <div className="chat-time right">{childData.date}</div> */}
+              {isImage(post.imageUrl)
+                ? <img src={post.imageUrl} alt="uploaded" style={{ maxWidth: '200px' }} />
+                : <td style={{textAlign:'center'}}>첨부파일 없음</td>}
             </tr>
           </tbody>
         </table>
@@ -294,7 +313,7 @@ function BoardView() {
     )}
 
     <div className="container mt-4">
-      <CommentBtn newOpenModal={newOpenModal} />
+      <CommentBtn newOpenModal={newOpenModal} setIWriter={setIWriter}/>
       <ModalWindow commentData={commentData} setCommentData={setCommentData}
         saveComment={saveComment}
         iWriter={iWriter} setIWriter={setIWriter}

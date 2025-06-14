@@ -68,8 +68,7 @@ function CatView(props) {
           <tr>
             <th>첨부파일</th>
             <td>
-              {
-                fileURL ? (
+              {fileURL ? (
                   <a href={fileURL} target="_blank" rel="noopener noreferrer" download>
                     {vi.filename}
                   </a>

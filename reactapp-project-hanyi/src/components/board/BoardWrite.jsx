@@ -1,20 +1,10 @@
 import { useEffect, useState } from "react";
 import { firestore, storage } from "../../firestoreConfig";
 import { doc, setDoc, addDoc, collection } from "firebase/firestore";
-import { ref, uploadBytes } from 'firebase/storage';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { Link, useNavigate } from "react-router-dom";
 import { getCookie } from "../members/cookieUtils";
 import '../css/catboard.css';
-
-function isImage(message) {
-  return typeof message === 'string' && message.startsWith('https://') && (
-    message.endsWith('.jpg') ||
-    message.endsWith('.jpeg') ||
-    message.endsWith('.png') ||
-    message.endsWith('.gif') ||
-    message.includes('firebasestorage.googleapis.com')
-  );
-}
 
 function BoardWrite() {
   console.log('firestore', firestore);
@@ -36,13 +26,14 @@ function BoardWrite() {
   }
 
   // 게시물 입력
-  const memberWrite = async (p_collection, p_title, p_contents, p_writer) => {
+  const memberWrite = async (p_collection, p_title, p_contents, p_writer, p_imageurl) => {
     // doc으로 입력을 위한 컬렉션과 도큐먼트를 만든 후 JS 객체로 정보 추가
     await addDoc(collection(firestore, p_collection), {
       title: p_title,
       contents: p_contents,
       writer: p_writer,
       regdate: nowDate(),
+      imageUrl: p_imageurl
     });
     console.log('입력성공');
   }
@@ -60,6 +51,11 @@ function BoardWrite() {
     }
   }, []);
   const user = getCookie('user');
+
+  // 파일 업로드
+  const [imageUrl, setImageUrl] = useState('');
+  // 파일 이름
+  const [fileName, setFileName] = useState('');
 
   return (<>
     <article>
@@ -80,9 +76,9 @@ function BoardWrite() {
         if (title === '') { alert('제목을 입력하세요'); return; }
         if (contents === '') { alert('내용 입력하세요'); return; }
         if (writer === '') { alert('이름을 입력하세요'); return; }
-        // 회원정보추가
-        memberWrite(collection, title, contents, writer);
 
+        memberWrite(collection, title, contents, writer, imageUrl);
+        // console.log(imageUrl)
         // 다음 입력을 위해 입력폼을 비워준다. 
         event.target.title.value = '';
         event.target.contents.value = '';
@@ -120,7 +116,7 @@ function BoardWrite() {
                 }
               </td>
             </tr>
-            {/* <tr>
+            <tr>
               <td>첨부파일</td>
               <td>
                 <input type="file" name="myfile" onChange={(e) => {
@@ -128,10 +124,18 @@ function BoardWrite() {
                   const imageRef = ref(fileRef1, e.target.files[0].name);
                   uploadBytes(imageRef, e.target.files[0]).then((snapshot) => {
                     console.log('업로드 성공', snapshot);
+                    setFileName(e.target.files[0].name)
+                    return getDownloadURL(snapshot.ref);
+                  }).then((url) => {
+                    console.log('이미지 url:',url);
+                    setImageUrl(url);
+                  }).catch((err)=>{
+                    console.log('업로드 실패', err);
                   });
                 }} />
+                {fileName && <p>{fileName}</p>}
               </td>
-            </tr> */}
+            </tr>
           </tbody>
         </table>
         <button type="submit">글쓰기</button>

@@ -1,10 +1,11 @@
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from "react";
-import { firestore } from "../../firestoreConfig";
+import { firestore, storage } from "../../firestoreConfig";
 import { doc, setDoc, getDoc, updateDoc, collection } from "firebase/firestore";
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import '../css/catboard.css';
 
-function App() {
+function BoardEdit() {
   // 날짜 생성
   const nowDate = () => {
     let dateObj = new Date();
@@ -22,6 +23,7 @@ function App() {
   const [title, setTitle] = useState('');
   const [contents, setContents] = useState('');
   const [writer, setWriter] = useState('');
+  const [imageUrl, setImageUrl] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,6 +34,7 @@ function App() {
         setTitle(data.title);
         setContents(data.contents);
         setWriter(data.writer);
+        setImageUrl(data.imageUrl);
       } else {
         alert("해당 게시물이 존재하지 않습니다.");
       }
@@ -47,11 +50,15 @@ function App() {
       title,
       contents,
       writer,
+      imageUrl,
     });
     alert("수정되었습니다.");
     navigate('/board');
   };
-  
+
+  const fileRef1 = ref(storage, 'file1');
+  const [fileName, setFileName] = useState('');
+
   return (<>
     <div className="boardView">
       <h3>게시물 수정하기🐾</h3>
@@ -93,6 +100,26 @@ function App() {
                 ></textarea>
               </td>
             </tr>
+            <tr>
+              <td>첨부파일</td>
+              <td>
+                <input type="file" name="myfile" onChange={(e) => {
+                  console.log('files 프로퍼티', e.target.files);
+                  const imageRef = ref(fileRef1, e.target.files[0].name);
+                  uploadBytes(imageRef, e.target.files[0]).then((snapshot) => {
+                    console.log('업로드 성공', snapshot);
+                    setFileName(e.target.files[0].name)
+                    return getDownloadURL(snapshot.ref);
+                  }).then((url) => {
+                    console.log('이미지 url:', url);
+                    setImageUrl(url);
+                  }).catch((err) => {
+                    console.log('업로드 실패', err);
+                  });
+                }} />
+                {fileName && <p>{fileName}</p>}
+              </td>
+            </tr>
           </tbody>
         </table>
         <button type="submit">수정</button>
@@ -101,4 +128,4 @@ function App() {
   </>)
 }
 
-export default App
+export default BoardEdit;

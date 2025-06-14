@@ -28,16 +28,20 @@ function BoardView() {
 }
 
 const CommentBtn = (props) => {
+  const openModal = () => {
+    const stored = JSON.parse(localStorage.getItem('user'));
+    if (stored?.username) {
+      props.setIWriter(stored.username);
+    }
+  };
   return (
     <div style={{ textAlign: 'center' }}>
       {/* 댓글 작성 버튼 */}
-      <button className="btn btn-yellow" data-bs-toggle="modal" data-bs-target="#commentModal" onClick={() => props.newOpenModal()}>
+      <button className="btn btn-yellow" data-bs-toggle="modal" data-bs-target="#commentModal" onClick={() => openModal()}>
         질문 작성
       </button>
     </div>);
 }
-
-
 
 function ModalWindow(props) {
   // 로그인 되어있으면 작성자가 자동으로
@@ -47,6 +51,9 @@ function ModalWindow(props) {
     if (storedData) {
       console.log('아이디', storedData.username);
       setIdData(storedData.username);
+      if (user) {
+        props.setIWriter(storedData.username);
+      }
     }
   }, []);
   const user = getCookie('user');
@@ -202,7 +209,7 @@ const QnaModal = () => {
   return (<>
     <div className="container mt-4">
       <BoardView />
-      <CommentBtn newOpenModal={newOpenModal} />
+      <CommentBtn newOpenModal={newOpenModal} setIWriter={setIWriter}/>
       <ModalWindow boardData={boardData} setBoardData={setBoardData}
         saveComment={saveComment}
         iWriter={iWriter} setIWriter={setIWriter}
